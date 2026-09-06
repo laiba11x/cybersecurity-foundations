@@ -1,0 +1,166 @@
+# Linux CLI Basics
+
+## What is the Terminal?
+
+The **terminal** is a text-based interface used to interact with a Linux operating system by typing commands.
+
+The CLI is useful in cybersecurity because it provides **speed, control and access to many security tools**.
+
+## Navigating the Linux Filesystem
+
+### `pwd`
+
+Shows my current directory.
+
+```bash
+pwd
+```
+
+**pwd = Print Working Directory**
+
+### `ls`
+
+Lists files and folders in the current directory.
+
+```bash
+ls
+```
+
+### `ls -l`
+
+Shows detailed information about files and folders, including permissions, ownership, size and dates.
+
+```bash
+ls -l
+```
+
+### `ls -al`
+
+Shows detailed information including **hidden files**.
+
+```bash
+ls -al
+```
+
+Linux hides files beginning with `.` by default.
+
+### `cd`
+
+Changes to another directory.
+
+```bash
+cd Documents
+```
+
+### `cd ..`
+
+Moves up one directory.
+
+```bash
+cd ..
+```
+
+## Finding Files
+
+### `find`
+
+Searches for files and directories.
+
+```bash
+find ~ -name filename
+```
+
+`~` represents my **home directory**.
+
+Example:
+
+```bash
+find ~ -name day1_report.txt
+```
+
+## Reading Files
+
+### `cat`
+
+Displays the contents of a file.
+
+```bash
+cat filename
+```
+
+Example:
+
+```bash
+cat mission_brief.txt
+```
+
+## System Information
+
+### `whoami`
+
+Shows the username of the current user.
+
+```bash
+whoami
+```
+
+### `uname -a`
+
+Shows detailed system information, including the **kernel version, hostname and system architecture**.
+
+```bash
+uname -a
+```
+
+### `uname`
+
+Shows the name of the operating system kernel.
+
+```bash
+uname
+```
+
+### `df -h`
+
+Shows disk space usage.
+
+```bash
+df -h
+```
+
+The `-h` means **human-readable**, displaying sizes such as `68G` and `11G`.
+
+## Linux Distribution Information
+
+Linux stores useful system information in `/etc`.
+
+The `/etc/os-release` file contains information about the Linux distribution.
+
+```bash
+cat /etc/os-release
+```
+
+For example, it can show that the system is running **Ubuntu 24.04.1 LTS**.
+
+## Important Linux Concepts
+
+* **Terminal/CLI** → interact with Linux using typed commands.
+* **Filesystem** → the structure used to organise files and directories.
+* **Home directory (`~`)** → the user's main directory.
+* **Hidden files** → files beginning with `.` that are hidden by default.
+* **`/etc`** → contains many system configuration and information files.
+
+## Key Takeaways
+
+* `pwd` = shows where I am.
+* `ls` = shows what's around me.
+* `cd` = moves between directories.
+* `cd ..` = moves up one directory.
+* `find` = searches for files.
+* `cat` = reads files.
+* `whoami` = shows who I am logged in as.
+* `uname -a` = shows detailed system information.
+* `df -h` = shows disk space.
+* `/etc/os-release` = shows Linux distribution information.
+
+These commands are the basic building blocks for working with Linux through the command line and will be useful for later **cybersecurity tools and investigations**.
