@@ -68,3 +68,37 @@ Unlike a VM, a container shares the host operating system's kernel. This makes c
 I used a virtualisation management environment to investigate a VM that had entered an error state, restart it, create a new VM with specific resources, and examine the resource usage of physical hosts.
 
 This helped me understand how virtual machines are managed in a practical environment.
+
+
+## Key Takeaways
+
+From this room, I learned that virtualisation allows one physical computer to run multiple separate virtual computers.
+
+The main concepts I learned were:
+
+* **Virtualisation** — allows one physical computer to act like multiple computers.
+* **Hypervisor** — software that creates and manages virtual machines.
+* **Virtual Machine (VM)** — a complete virtual computer with its own operating system and resources.
+* **Container** — a lightweight, isolated environment used to run an application.
+* **Container Image** — a pre-packaged template used to create a container.
+* **Network Port** — a numbered entry point used by applications to communicate over a network.
+
+### Benefits of Virtualisation
+
+Virtualisation can provide:
+
+* Lower costs
+* Better use of hardware resources
+* Safer environments for security testing
+* Faster deployment
+* Flexibility
+* Portability
+* Scalability
+* Centralised management
+
+### What I Practised
+
+I used a virtualisation management environment to investigate a VM, restart it after an error, create a new VM, and examine the resource usage of physical hosts.
+
+This helped me understand how virtualisation is used to manage and run virtual environments in practice.
+
