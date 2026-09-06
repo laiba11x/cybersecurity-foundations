@@ -1,0 +1,151 @@
+# SQL Basics
+
+## What is a Database?
+
+A database is an organised way of storing information so that a computer can quickly search, filter, sort, and manage data.
+
+A database can contain multiple **tables**.
+
+### Tables, Rows and Columns
+
+* **Table** → stores a collection of related information.
+* **Column** → stores one type of information, such as `drink` or `price`.
+* **Row** → represents one complete record, such as one café order.
+
+For example, an `Orders` table might contain:
+
+```text
+Orders
+------------------------------------------------
+id | drink  | price | time
+1  | Coffee | 2.50  | 09:15
+2  | Tea    | 2.00  | 09:20
+```
+
+Each row represents one order.
+
+---
+
+# SQL
+
+**SQL (Structured Query Language)** is used to communicate with relational databases and retrieve information.
+
+A question asked to a database using SQL is called a **query**.
+
+## SELECT
+
+`SELECT` chooses which columns/data to display.
+
+```sql
+SELECT * FROM Orders;
+```
+
+`*` means all columns.
+
+To select specific columns:
+
+```sql
+SELECT drink, price FROM Orders;
+```
+
+---
+
+## FROM
+
+`FROM` specifies which table the data should come from.
+
+```sql
+SELECT * FROM Orders;
+```
+
+This means:
+
+**Show all information from the `Orders` table.**
+
+---
+
+## WHERE
+
+`WHERE` filters the results based on a condition.
+
+```sql
+SELECT * FROM Orders WHERE drink = 'Coffee';
+```
+
+This only shows rows where the drink is Coffee.
+
+---
+
+## ORDER BY
+
+`ORDER BY` sorts the results.
+
+```sql
+SELECT * FROM Orders ORDER BY price;
+```
+
+By default, this sorts from **lowest to highest**.
+
+To sort from highest to lowest:
+
+```sql
+SELECT * FROM Orders ORDER BY price DESC;
+```
+
+`DESC` means descending.
+
+---
+
+## Combining SQL Commands
+
+SQL commands can be combined to make more specific queries.
+
+```sql
+SELECT * FROM Orders
+WHERE drink = 'Coffee'
+ORDER BY price DESC;
+```
+
+This means:
+
+**Show all Coffee orders and sort them from most expensive to cheapest.**
+
+---
+
+# Key SQL Commands
+
+| Command    | Purpose                      |
+| ---------- | ---------------------------- |
+| `SELECT`   | Choose what data to display  |
+| `FROM`     | Choose the table/data source |
+| `WHERE`    | Filter records               |
+| `ORDER BY` | Sort results                 |
+| `DESC`     | Sort from highest to lowest  |
+
+---
+
+# Security
+
+Databases can contain important information, so access needs to be controlled.
+
+If someone could change or delete café orders without permission, they could:
+
+* Modify incorrect information.
+* Delete records.
+* Manipulate prices or payments.
+* Damage the integrity of the database.
+
+This is why databases need proper **authentication, permissions and access controls**.
+
+## Main Takeaways
+
+* Databases store information in an organised way.
+* Tables contain rows and columns.
+* A row represents one complete record.
+* A column represents one type of information.
+* SQL is used to query databases.
+* `SELECT` chooses the data to display.
+* `FROM` chooses the table.
+* `WHERE` filters the results.
+* `ORDER BY` sorts the results.
+* Unauthorised database access can allow someone to modify or delete data.
