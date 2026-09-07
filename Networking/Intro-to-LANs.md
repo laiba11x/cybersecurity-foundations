@@ -51,3 +51,40 @@ A **router connects different networks** and passes data between them.
 
 * **Switch:** connects devices within a network.
 * **Router:** connects different networks.
+
+* ## Subnetting
+
+**Subnetting** is the process of splitting a larger network into smaller networks called **subnets**.
+
+It helps organisations separate devices and departments into different parts of a network.
+
+### Subnet Addresses
+
+* **Network Address:** identifies the network itself.
+
+  * Example: `192.168.1.0`
+* **Host Address:** identifies a specific device on the network.
+
+  * Example: `192.168.1.100`
+* **Default Gateway:** device/address used to send data to other networks.
+
+  * Example: `192.168.1.254`
+
+### Subnet Mask
+
+A **subnet mask** determines which part of an IP address represents the network and which part represents the host.
+
+It is also made up of **32 bits** and is usually written as four numbers from `0–255`.
+
+### Why Subnetting Is Useful
+
+* **Efficiency:** organises network addresses.
+* **Security:** separates different groups of devices.
+* **Control:** allows administrators to manage different parts of a network.
+
+**Example:** A café could use one subnet for employees and payment systems and another for public Wi-Fi.
+
+### Key Takeaway
+
+**Subnetting = splitting one network into smaller networks to improve organisation, security and control.**
+
