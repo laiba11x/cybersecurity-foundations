@@ -107,4 +107,25 @@ The device then stores the IP-to-MAC mapping in its **ARP cache** so it can use 
 
 **ARP = finds the MAC address of a device using its IP address.**
 
+## DHCP (Dynamic Host Configuration Protocol)
+
+**DHCP** automatically assigns IP addresses to devices when they connect to a network.
+
+### How DHCP Works
+
+The process is commonly remembered as **DORA**:
+
+1. **DHCP Discover** — device searches for a DHCP server.
+2. **DHCP Offer** — server offers an IP address.
+3. **DHCP Request** — device requests the offered IP address.
+4. **DHCP ACK** — server confirms the assignment.
+
+The device can then use the assigned IP address to communicate on the network.
+
+### Key Takeaway
+
+**DHCP automatically assigns IP addresses to devices on a network.**
+
+**DORA = Discover → Offer → Request → ACK**
+
 
