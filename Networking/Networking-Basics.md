@@ -136,4 +136,35 @@ For example, if a Wi-Fi network allows a specific MAC address, another device co
 * **MAC address** → identifier associated with a network interface.
 * **MAC spoofing** → pretending to have another device's MAC address.
 
+* ## Ping and ICMP
+
+**Ping** is a basic network tool used to check whether a device can be reached and to measure the response time between devices.
+
+Ping uses **ICMP (Internet Control Message Protocol)** packets.
+
+It works by sending an **ICMP Echo Request** to the target and waiting for an **ICMP Echo Reply**.
+
+### Basic Syntax
+
+```bash
+ping IP_ADDRESS
+```
+
+Example:
+
+```bash
+ping 8.8.8.8
+```
+
+The results can show:
+
+* Whether the target responds.
+* How many packets were sent and received.
+* The response time, usually measured in milliseconds (ms).
+
+### Key Takeaway
+
+**Ping uses ICMP to test connectivity between devices and measure response time.**
+
+
 
