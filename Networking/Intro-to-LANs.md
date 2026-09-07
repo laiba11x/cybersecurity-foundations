@@ -88,3 +88,23 @@ It is also made up of **32 bits** and is usually written as four numbers from `0
 
 **Subnetting = splitting one network into smaller networks to improve organisation, security and control.**
 
+## ARP (Address Resolution Protocol)
+
+**ARP** is used to find the **MAC address associated with an IP address** on a local network.
+
+Devices use ARP when they need to communicate with another device but only know its IP address.
+
+### How ARP Works
+
+ARP uses two main messages:
+
+* **ARP Request:** broadcasts a message asking, *“Who has this IP address?”*
+* **ARP Reply:** the device with that IP address responds with its **MAC address**.
+
+The device then stores the IP-to-MAC mapping in its **ARP cache** so it can use it again later.
+
+### Key Takeaway
+
+**ARP = finds the MAC address of a device using its IP address.**
+
+
