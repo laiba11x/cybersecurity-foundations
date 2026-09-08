@@ -164,3 +164,56 @@ For example, it can show that the system is running **Ubuntu 24.04.1 LTS**.
 * `/etc/os-release` = shows Linux distribution information.
 
 These commands are the basic building blocks for working with Linux through the command line and will be useful for later **cybersecurity tools and investigations**.
+
+## Who Are You on This Machine?
+
+Linux is commonly used for **servers and cybersecurity systems**. Cybersecurity professionals often interact with Linux through the **terminal (CLI)**.
+
+### Commands
+
+| Command  | Purpose                |
+| -------- | ---------------------- |
+| `whoami` | Shows the current user |
+| `echo`   | Outputs text           |
+
+Examples:
+
+```bash
+whoami
+echo TryHackMe
+echo "hello world"
+```
+
+### Why `whoami` is useful
+
+Knowing which user you are is important because different users have different **permissions and access**.
+
+In cybersecurity, you may switch between users, so checking the current user helps you understand what you can access.
+
+### Terminal Output
+
+**Output** is the information the computer gives back after you run a command.
+
+For example:
+
+```bash
+echo TryHackMe
+```
+
+outputs:
+
+```text
+TryHackMe
+```
+
+### Useful Tip
+
+Use the **up and down arrow keys** to move through commands you have previously entered.
+
+### Key takeaway
+
+`whoami` → tells you **who you are**
+
+`echo` → **outputs text**
+
+The Linux terminal is an important cybersecurity skill because many security tools and tasks are performed through the command line.
