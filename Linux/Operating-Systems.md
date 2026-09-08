@@ -140,3 +140,20 @@ There is no single OS that is perfect for every situation.
 * Operating systems have different types because different devices and environments have different requirements.
 * **Linux is a family of open-source operating systems**, and Ubuntu is one of its distributions.
 
+# Where Linux Is Used
+
+Linux is a popular operating system that is **lightweight and flexible**.
+
+It is used in many devices and systems, including:
+
+* **Web servers** – powering websites and online services
+* **Cars** – entertainment and control systems
+* **Point of Sale (PoS) systems** – checkout tills and registers
+* **Critical infrastructure** – traffic lights and industrial sensors
+* **Phones and small devices** – many embedded and mobile systems
+* **Other computing systems** – Linux is used in many devices behind the scenes
+
+## Key takeaway
+
+Linux is not only used on computers. It powers **websites, vehicles, shops, infrastructure, phones, and many other devices**.
+
