@@ -338,3 +338,233 @@ UAC does **not** normally apply to the built-in local Administrator account in t
 
 **UAC reduces the risk of malware and unwanted changes by requiring approval for actions that need elevated privileges.**
 
+## UAC Security Levels
+
+The **User Account Control (UAC)** slider has four security levels:
+
+1. **Always notify** — highest security. Windows asks for confirmation whenever apps or users try to make system-level changes. The screen dims.
+2. **Notify for apps** — Windows asks when apps try to make changes, but not when you change Windows settings. **This is the default setting.**
+3. **Notify without dimming** — same as above, but the screen does not dim.
+4. **Never notify** — UAC notifications are disabled. Windows does not warn you about changes.
+
+### Key takeaway
+
+**Always notify = highest security**
+**Never notify = lowest security**
+
+The default Windows setting is **Notify for apps**.
+
+## Settings & Control Panel
+
+Windows has two main places for changing system settings:
+
+### Settings
+
+* Modern Windows interface for changing system settings.
+* Usually the first place users go to change settings.
+* Examples include network, personalisation, accounts and other system options.
+
+### Control Panel
+
+* Older Windows system-management interface.
+* Used for more advanced or complex settings.
+* Examples include uninstalling programs, managing devices and configuring certain system options.
+
+### Programs and Features
+
+**Control Panel → Programs → Programs and Features** shows installed applications, including:
+
+* Application name
+* Publisher
+* Version
+
+This can be useful for checking what software is installed on a system.
+
+### Key takeaway
+
+**Settings** is the main modern interface for changing Windows settings, while **Control Panel** provides access to many older and more advanced system-management options.
+
+## Task Manager
+
+**Task Manager** shows information about applications and processes currently running on Windows.
+
+It can also show system resource usage, such as:
+
+* **CPU** usage
+* **RAM (Memory)** usage
+* Disk usage
+* Network usage
+
+### Opening Task Manager
+
+Right-click the **Taskbar** → **Task Manager**
+
+Task Manager initially opens in a simple view. Selecting **More details** shows additional information and tabs.
+
+### Key takeaway
+
+**Task Manager is useful for monitoring running processes, applications and system resource usage.**
+
+## System Configuration (MSConfig)
+
+**System Configuration (MSConfig)** is a Windows utility mainly used for **advanced troubleshooting and diagnosing startup problems**.
+
+It requires **administrator privileges**.
+
+### MSConfig Tabs
+
+* **General** — controls which services and devices Windows loads during startup.
+* **Boot** — provides options for how Windows starts.
+* **Services** — lists Windows services and whether they are running or stopped.
+* **Startup** — startup items; on modern Windows, Task Manager is normally used to manage these.
+* **Tools** — provides access to other Windows configuration and diagnostic tools.
+
+### Startup Folder
+
+On Windows Server, startup applications can be checked using:
+
+`shell:startup`
+
+Press **Win + R**, enter `shell:startup`, then press Enter.
+
+## Advanced System Settings
+
+Advanced System Settings can be used to configure **performance and system recovery**.
+
+### Page File
+
+The **page file** provides extra virtual memory on disk when physical RAM becomes full.
+
+It can help prevent:
+
+* Slowdowns
+* Application crashes caused by running out of memory
+
+You can view settings such as:
+
+* Drive where the page file is stored
+* Initial size
+* Maximum size
+* Whether Windows manages the size automatically
+
+### Startup and Recovery
+
+Windows can create a **crash dump file** when a critical system error occurs, such as a Blue Screen of Death (BSOD).
+
+Crash dumps help administrators and security analysts investigate what caused a crash.
+
+Common dump types:
+
+* Automatic memory dump
+* Kernel memory dump
+* Small memory dump (256 KB)
+* Complete memory dump
+* None
+
+### Key takeaway
+
+**MSConfig helps troubleshoot Windows startup and system configuration, while Advanced System Settings provides controls for performance, virtual memory and crash recovery.**
+
+## Computer Management
+
+**Computer Management (`compmgmt`)** is a Windows utility for managing different parts of the system.
+
+It has three main sections:
+
+### 1. System Tools
+
+* **Task Scheduler** — creates and manages tasks that run automatically at specific times or events.
+* **Event Viewer** — records system events and provides an audit trail useful for troubleshooting and investigations.
+* **Shared Folders** — shows folders shared over the network and users connected to them.
+* **Local Users and Groups** — manages local users and groups.
+* **Performance Monitor (`perfmon`)** — monitors system performance in real time or from logs.
+* **Device Manager** — views and manages hardware devices.
+
+### 2. Storage
+
+**Disk Management** allows administrators to:
+
+* Set up new drives
+* Extend partitions
+* Shrink partitions
+* Assign or change drive letters
+
+### 3. Services and Applications
+
+**Services** shows Windows services and their status.
+
+Service startup types include:
+
+* **Automatic** — starts when Windows boots.
+* **Manual** — starts when triggered by another process or user.
+* **Disabled** — cannot run.
+
+Service properties can show the service name, executable path and startup type.
+
+**WMI Control** manages **Windows Management Instrumentation (WMI)**, which allows Windows systems to be managed locally or remotely.
+
+### Cybersecurity relevance
+
+These tools are useful for **troubleshooting, system administration and security investigations**. For example, Event Viewer can reveal suspicious activity, while Task Scheduler and Services can help identify programs configured to run automatically.
+
+### Key takeaway
+
+**Computer Management provides tools for managing tasks, events, users, hardware, storage and Windows services.**
+
+## Microsoft System Information (Msinfo32)
+
+**Microsoft System Information (`msinfo32.exe`)** provides detailed information about a Windows computer's hardware, system components and software environment.
+
+### Main Sections
+
+* **Hardware Resources** — information about hardware resources used by the system.
+* **Components** — information about installed hardware devices, such as display and input devices.
+* **Software Environment** — information about Windows software, installed software, environment variables and network connections.
+
+### Environment Variables
+
+Environment variables store information used by Windows and applications.
+
+For example:
+
+`%WINDIR%` → location of the Windows installation directory.
+
+### Searching System Information
+
+Msinfo32 includes a search bar that can be used to find specific information, such as **IP addresses**.
+
+### Key takeaway
+
+**Msinfo32 is useful for viewing detailed hardware, software, network and system configuration information.**
+
+## Resource Monitor (Resmon)
+
+**Resource Monitor (`resmon.exe`)** is a Windows tool used to monitor system resources and troubleshoot performance issues.
+
+It provides information about:
+
+* **CPU** — processor usage and processes using the CPU.
+* **Memory** — RAM usage.
+* **Disk** — disk activity and which processes are accessing the disk.
+* **Network** — network activity and connections.
+
+### Resource Monitor Tabs
+
+The main tabs are:
+
+* Overview
+* CPU
+* Memory
+* Disk
+* Network
+
+Resource Monitor also provides **real-time graphs** showing resource usage.
+
+### Cybersecurity relevance
+
+Resource Monitor can help identify unusual processes, unexpected network activity or programs consuming large amounts of system resources.
+
+### Key takeaway
+
+**Resource Monitor (`resmon.exe`) helps monitor CPU, memory, disk and network activity in real time.**
+
