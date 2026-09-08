@@ -870,3 +870,193 @@ fg
 * `fg` → bring a background process to the foreground
 * **PID** = Process ID
 * **systemd** manages many services and processes on Linux
+
+# Cron & Crontabs
+
+## Cron
+
+**Cron** is a Linux process used to automatically run commands or tasks at scheduled times.
+
+Examples:
+
+* Running commands
+* Backing up files
+* Starting programs
+
+A **crontab** is a file containing scheduled tasks that Cron reads and executes.
+
+### Crontab Format
+
+A crontab uses **6 values**:
+
+| Value  | Meaning          |
+| ------ | ---------------- |
+| `MIN`  | Minute           |
+| `HOUR` | Hour             |
+| `DOM`  | Day of the month |
+| `MON`  | Month            |
+| `DOW`  | Day of the week  |
+| `CMD`  | Command to run   |
+
+Example:
+
+```text
+0 */12 * * * cp -R /home/cmnatic/Documents /var/backups/
+```
+
+This runs the backup **every 12 hours**.
+
+### Wildcard `*`
+
+`*` means **any value**.
+
+For example:
+
+```text
+* * * * *
+```
+
+means the command can run every minute, regardless of the hour, day, month, or weekday.
+
+### Editing a Crontab
+
+Use:
+
+```bash
+crontab -e
+```
+
+This opens your crontab so you can add or edit scheduled tasks.
+
+### Key Takeaways
+
+* **Cron** → automatically runs scheduled tasks.
+* **Crontab** → file containing scheduled tasks.
+* `crontab -e` → edit your crontab.
+* `*` → wildcard meaning any value.
+* Crontab format: `MIN HOUR DOM MON DOW CMD`.
+
+# Packages & Software Repositories
+
+## APT
+
+**APT (Advanced Package Tool)** is used on Debian/Ubuntu Linux to manage software packages.
+
+It can be used to:
+
+* Install software
+* Remove software
+* Update software
+* Manage software repositories
+
+### Software Repositories
+
+A **repository** is a location containing software packages that Linux can download and install.
+
+Ubuntu provides official repositories, but additional community or third-party repositories can also be added.
+
+Repository configuration is commonly stored in:
+
+```text
+/etc/apt/
+```
+
+Additional repository files can be stored in:
+
+```text
+/etc/apt/sources.list.d/
+```
+
+### Updating Package Information
+
+```bash
+apt update
+```
+
+This updates the list of available packages from the configured repositories.
+
+### Installing Software
+
+```bash
+apt install <package-name>
+```
+
+Example:
+
+```bash
+apt install sublime-text
+```
+
+### Removing Software
+
+```bash
+apt remove <package-name>
+```
+
+Example:
+
+```bash
+apt remove sublime-text
+```
+
+### GPG Keys
+
+**GPG keys** help verify the authenticity and integrity of software from a repository.
+
+They help ensure that the software comes from a trusted source and has not been tampered with.
+
+### Key Takeaways
+
+* **APT** → manages software packages on Ubuntu/Debian.
+* **Repository** → location containing software packages.
+* `apt update` → updates the package list.
+* `apt install` → installs software.
+* `apt remove` → removes software.
+* `/etc/apt/` → contains APT configuration.
+* `/etc/apt/sources.list.d/` → commonly contains additional repository files.
+* **GPG keys** → help verify trusted software sources.
+
+# Log Files
+
+Linux stores many system and application logs in:
+
+```text id="3y7h2q"
+/var/log
+```
+
+Logs contain information about **applications, services, the operating system, and user activity**.
+
+## Log Rotation
+
+Linux automatically manages old log files through a process called **log rotation**.
+
+This prevents log files from growing too large and using excessive disk space.
+
+## Why Logs Are Important
+
+Logs are useful for:
+
+* Monitoring system health
+* Troubleshooting problems
+* Investigating security incidents
+* Detecting suspicious activity
+* Tracking user authentication attempts
+
+For example, web server logs can record requests made to a website, which can help administrators investigate an attack or diagnose problems.
+
+## Web Server Logs
+
+Two important types of web server logs are:
+
+* **Access log** → records requests made to the web server.
+* **Error log** → records errors and problems with the web server.
+
+Other services can also have their own logs, such as:
+
+* **Apache2** → web server activity
+* **Fail2ban** → attempted attacks/brute-force activity
+* **UFW** → firewall activity
+
+### Key Takeaway
+
+`/var/log` is an important place to check when **troubleshooting a Linux system or investigating suspicious activity**.
