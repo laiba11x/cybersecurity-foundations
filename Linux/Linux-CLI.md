@@ -217,3 +217,39 @@ Use the **up and down arrow keys** to move through commands you have previously 
 `echo` → **outputs text**
 
 The Linux terminal is an important cybersecurity skill because many security tools and tasks are performed through the command line.
+
+## Finding Files and Searching Text
+
+Linux has commands that can quickly search for files and text instead of manually looking through them.
+
+| Command | Purpose                                 | Example                            |
+| ------- | --------------------------------------- | ---------------------------------- |
+| `find`  | Searches for files by name              | `find -name passwords.txt`         |
+| `grep`  | Searches inside files for specific text | `grep "password123" passwords.txt` |
+
+### `find`
+
+Use `find` when you want to **find a file**.
+
+```bash
+find -name passwords.txt
+```
+
+### `grep`
+
+Use `grep` when you want to **search inside a file** for specific text.
+
+```bash
+grep "password123" passwords.txt
+```
+
+### Example
+
+If a web server log called `access.log` contains hundreds of lines, `grep` can search through it for specific text instead of checking every line manually.
+
+### Key takeaway
+
+**`find` → searches for files**
+
+**`grep` → searches inside files for text**
+
