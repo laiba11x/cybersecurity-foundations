@@ -59,3 +59,55 @@ I learned how to:
 * View basic network information.
 
 These are useful foundational skills for IT and cybersecurity investigations.
+
+## Windows Command Prompt (CMD)
+
+**Command Prompt (`cmd`)** is a text-based interface used to interact with and manage Windows using commands.
+
+### Basic Commands
+
+| Command    | Purpose                                                    |
+| ---------- | ---------------------------------------------------------- |
+| `hostname` | Displays the computer name                                 |
+| `whoami`   | Displays the currently logged-in user                      |
+| `ipconfig` | Displays network configuration                             |
+| `cls`      | Clears the Command Prompt screen                           |
+| `netstat`  | Displays network statistics and current TCP/IP connections |
+| `net`      | Manages network resources                                  |
+
+### Getting Help
+
+Most CMD commands support:
+
+`/?`
+
+For example:
+
+`ipconfig /?`
+
+This displays the command's help information and available options.
+
+The `net` command uses different syntax:
+
+`net help`
+
+For a specific sub-command:
+
+`net help user`
+
+Other useful `net` sub-commands include:
+
+* `user`
+* `localgroup`
+* `use`
+* `share`
+* `session`
+
+### Cybersecurity relevance
+
+CMD commands can quickly provide information about a Windows system, its users, network configuration and active network connections.
+
+### Key takeaway
+
+**CMD allows users and security professionals to interact with Windows and gather system and network information using commands.**
+
