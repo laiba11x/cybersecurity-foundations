@@ -589,3 +589,284 @@ In cybersecurity, `/tmp` can be useful because **regular users can normally writ
 * `/root` → root user's home
 * `/tmp` → temporary files
 
+## Terminal Text Editors
+
+Text editors allow you to **create and edit files directly from the Linux terminal**.
+
+### Nano
+
+**Nano** is a simple, beginner-friendly terminal text editor.
+
+To create or edit a file:
+
+```bash id="p1x0u3"
+nano filename
+```
+
+Example:
+
+```bash id="j5k8z2"
+nano myfile
+```
+
+You can then type and edit text inside the file.
+
+### Useful Nano Shortcuts
+
+Nano uses **Ctrl + a key** for many actions.
+
+| Shortcut   | Purpose             |
+| ---------- | ------------------- |
+| `Ctrl + X` | Exit Nano           |
+| `Ctrl + O` | Save/write the file |
+| `Ctrl + W` | Search for text     |
+| `Ctrl + K` | Cut a line          |
+| `Ctrl + U` | Paste               |
+| `Ctrl + _` | Go to a line        |
+
+The `^` symbol in Nano represents the **Ctrl key**.
+
+### VIM
+
+**VIM** is a more advanced terminal text editor.
+
+Benefits include:
+
+* Customisable keyboard shortcuts
+* Syntax highlighting for code
+* Works on many terminals where Nano may not be installed
+* Many tutorials and resources are available
+
+### Nano vs VIM
+
+**Nano** → simpler and easier for beginners.
+
+**VIM** → more powerful but has a steeper learning curve.
+
+### Key takeaway
+
+**Nano = simple terminal text editor**
+
+**VIM = advanced terminal text editor**
+
+Both can be used to create and edit files from the Linux command line.
+
+# Downloading & Transferring Files
+
+## Wget
+
+`wget` downloads files from the web using HTTP/HTTPS.
+
+### Basic syntax
+
+```bash
+wget <URL>
+```
+
+Example:
+
+```bash
+wget https://example.com/file.txt
+```
+
+The downloaded file is normally saved in your current directory.
+
+---
+
+## SCP — Secure Copy
+
+`scp` securely copies files between computers using **SSH**.
+
+It can copy:
+
+* Local → Remote
+* Remote → Local
+
+### Local → Remote
+
+```bash
+scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
+```
+
+### Remote → Local
+
+```bash
+scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt
+```
+
+### Key idea
+
+`scp` follows:
+
+```text
+SOURCE → DESTINATION
+```
+
+Because it uses SSH, authentication and encryption are provided.
+
+---
+
+## Python HTTP Server
+
+Python 3 can quickly turn a directory into a simple web server.
+
+Start a server with:
+
+```bash
+python3 -m http.server
+```
+
+By default, it uses **port 8000**.
+
+Another computer can then download files using `wget`:
+
+```bash
+wget http://10.128.186.34:8000/myfile
+```
+
+The Python server shares files from the directory where the command was run.
+
+### Important
+
+Keep the Python server running in one terminal and use a **second terminal** for commands such as `wget`.
+
+---
+
+## Key Takeaways
+
+* `wget` → download files from the web.
+* `scp` → securely copy files between computers using SSH.
+* `python3 -m http.server` → quickly share files through a web server.
+* `scp` uses **SOURCE → DESTINATION**.
+* Python's HTTP server uses **port 8000** by default.
+
+# Processes & Process Management
+
+## Processes
+
+A **process** is a program currently running on the computer.
+
+The **kernel** manages processes, and each process has a unique **PID (Process ID)**.
+
+### Viewing Processes
+
+`ps` shows processes running in the current user session.
+
+```bash
+ps
+```
+
+`ps aux` shows processes from **all users**, including system processes.
+
+```bash
+ps aux
+```
+
+`top` shows processes and system usage **in real time**.
+
+```bash
+top
+```
+
+---
+
+## Managing Processes
+
+The `kill` command sends a signal to a process using its PID.
+
+```bash
+kill 1337
+```
+
+Common signals:
+
+* **SIGTERM** → safely terminate a process and allow cleanup
+* **SIGKILL** → immediately terminate a process without cleanup
+* **SIGSTOP** → stop/suspend a process
+
+---
+
+## How Processes Start
+
+Linux uses **namespaces** to isolate processes and control access to resources such as CPU and RAM.
+
+This improves security because processes in different namespaces are isolated from each other.
+
+**systemd** is an important system process that starts when Linux boots. Other programs can run as **child processes** of systemd.
+
+---
+
+## systemctl
+
+`systemctl` is used to manage services controlled by **systemd**.
+
+Basic syntax:
+
+```bash
+systemctl [option] [service]
+```
+
+Common options:
+
+```text
+start
+stop
+enable
+disable
+status
+```
+
+Examples:
+
+```bash
+systemctl start apache2
+systemctl stop apache2
+systemctl status apache2
+```
+
+* **start** → start a service
+* **stop** → stop a service
+* **enable** → start a service automatically when the system boots
+* **disable** → prevent automatic startup
+* **status** → view the service's current status
+
+---
+
+## Background & Foreground Processes
+
+A process can run in the **foreground** or **background**.
+
+### Background
+
+Add `&` to run a command in the background:
+
+```bash
+echo "Hi THM" &
+```
+
+This allows you to continue using the terminal while the process runs.
+
+### Ctrl + Z
+
+`Ctrl + Z` suspends a running process and puts it in the background.
+
+### Foreground
+
+`fg` brings a background process back to the foreground.
+
+```bash
+fg
+```
+
+### Key Takeaways
+
+* `ps` → view current processes
+* `ps aux` → view processes from all users
+* `top` → real-time process information
+* `kill <PID>` → send a signal to a process
+* `systemctl` → manage services
+* `&` → run a command in the background
+* `Ctrl + Z` → suspend a process
+* `fg` → bring a background process to the foreground
+* **PID** = Process ID
+* **systemd** manages many services and processes on Linux
