@@ -568,3 +568,24 @@ Resource Monitor can help identify unusual processes, unexpected network activit
 
 **Resource Monitor (`resmon.exe`) helps monitor CPU, memory, disk and network activity in real time.**
 
+## Windows Registry
+
+The **Windows Registry** is a central hierarchical database that stores configuration information used by Windows, applications, users and hardware.
+
+It contains information such as:
+
+* User profiles
+* Installed applications
+* Application settings
+* Hardware information
+* Ports being used
+
+### Registry Editor
+
+**Registry Editor (`regedit.exe`)** is used to view and edit the Windows Registry.
+
+⚠️ **Be careful when modifying the Registry.** Incorrect changes can affect normal Windows operation.
+
+### Key takeaway
+
+**The Windows Registry stores important system and application configuration information. `regedit.exe` opens the Registry Editor.**
