@@ -253,3 +253,76 @@ If a web server log called `access.log` contains hundreds of lines, `grep` can s
 
 **`grep` → searches inside files for text**
 
+## Shell Operators
+
+Linux uses **operators** to combine commands or redirect their output.
+
+| Operator | Purpose                                                                    |
+| -------- | -------------------------------------------------------------------------- |
+| `&`      | Runs a command in the background without waiting for it to finish          |
+| `&&`     | Runs the second command only after the first command finishes successfully |
+| `>`      | Sends output to a file and **overwrites** existing content                 |
+| `>>`     | Sends output to a file and **adds** to the existing content                |
+
+### Output Redirection
+
+The `>` operator can save command output into a file.
+
+```bash
+echo "hey" > welcome
+```
+
+This creates a file called `welcome` containing `hey`.
+
+Use `cat` to view the file:
+
+```bash
+cat welcome
+```
+
+### `>` vs `>>`
+
+`>` **overwrites** the file:
+
+```bash
+echo "Hello" > test
+```
+
+`>>` **adds to the end** of the file:
+
+```bash
+echo "World" >> test
+```
+
+The file will now contain both lines.
+
+### TryHackMe Practical
+
+To complete the task:
+
+```bash
+echo "TryHackMe" > thm
+```
+
+Then add more text using:
+
+```bash
+echo "thm" >> thm
+```
+
+Check the contents with:
+
+```bash
+cat thm
+```
+
+### Key takeaway
+
+`&` → background
+
+`&&` → run commands in order
+
+`>` → overwrite output into a file
+
+`>>` → append output to a file
+
