@@ -528,3 +528,64 @@ A file does **not** necessarily need a file extension such as `.txt`.
 
 
 It allows you to control a remote machine while encrypting the data sent between the devices.
+
+## Important Linux Directories
+
+Linux has several important directories in the root (`/`) directory.
+
+| Directory | Purpose                                               |
+| --------- | ----------------------------------------------------- |
+| `/etc`    | Contains system configuration files                   |
+| `/var`    | Contains frequently changing data such as logs        |
+| `/root`   | Home directory of the `root` user                     |
+| `/tmp`    | Stores temporary files and can be written to by users |
+
+### `/etc`
+
+`/etc` contains important **system configuration files**.
+
+Examples:
+
+* `/etc/passwd` – information about user accounts
+* `/etc/shadow` – stores password-related information
+* `/etc/sudoers` – controls who can use `sudo` and certain root-level commands
+
+### `/var`
+
+`/var` stores **variable data** that is frequently created or changed by applications and services.
+
+For example:
+
+```text
+/var/log
+```
+
+contains system and application **log files**.
+
+### `/root`
+
+`/root` is the **home directory of the root user**.
+
+It is different from:
+
+```text
+/home
+```
+
+which normally contains the home directories of regular users.
+
+### `/tmp`
+
+`/tmp` stands for **temporary**.
+
+It is used to store files that are only needed temporarily. Its contents may be cleared when the system restarts.
+
+In cybersecurity, `/tmp` can be useful because **regular users can normally write files there**, making it a convenient location for temporary scripts or files.
+
+### Key takeaway
+
+* `/etc` → configuration
+* `/var` → changing data and logs
+* `/root` → root user's home
+* `/tmp` → temporary files
+
