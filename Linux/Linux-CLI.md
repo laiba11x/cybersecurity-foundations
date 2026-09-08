@@ -326,3 +326,205 @@ cat thm
 
 `>>` → append output to a file
 
+## SSH (Secure Shell)
+
+**SSH (Secure Shell)** is a protocol used to **connect to and interact with a remote computer through the command line**.
+
+### How SSH Works
+
+SSH uses **encryption** to protect data sent between two devices.
+
+When you enter a command:
+
+1. You enter the command on your computer.
+2. SSH encrypts the data.
+3. The encrypted data travels across the network.
+4. The remote machine decrypts it and executes the command.
+5. The response is sent back securely.
+
+### Why SSH Is Useful
+
+SSH allows you to:
+
+* Remotely execute commands on another computer
+* Manage remote Linux servers
+* Securely communicate over a network
+* Protect data from being easily read while travelling across the network
+
+## Flags and Switches
+
+Many Linux commands accept **arguments** that change or extend their normal behaviour.
+
+These are often called **flags** or **switches** and usually start with a hyphen (`-`) or double hyphen (`--`).
+
+### Example: `ls`
+
+Normally:
+
+```bash
+ls
+```
+
+lists the files and folders in the current directory.
+
+To also show hidden files:
+
+```bash
+ls -a
+```
+
+`-a` means **all**.
+
+Files and folders beginning with `.` are normally hidden.
+
+Example:
+
+```text
+.hiddenfolder
+folder1
+```
+
+### `--help`
+
+Many commands have a `--help` option that shows available flags and a short explanation of what they do.
+
+```bash
+ls --help
+```
+
+This is useful when learning a new command.
+
+## Man Pages
+
+**Man pages (manual pages)** provide detailed documentation about Linux commands and applications.
+
+Use:
+
+```bash
+man <command>
+```
+
+For example:
+
+```bash
+man ls
+```
+
+This shows information about `ls`, including its available options and how to use them.
+
+To exit a man page, press:
+
+```text
+q
+```
+
+### Key takeaway
+
+* **Flags/switches** → change how a command behaves
+* `-a` → show hidden files with `ls`
+* `--help` → shows available options
+* `man <command>` → opens the command's detailed manual
+
+
+### Key takeaway
+
+**SSH = secure remote command-line access.**
+
+## Managing Files and Folders
+
+Linux provides commands for creating, moving, copying and deleting files and folders.
+
+| Command | Purpose                         |
+| ------- | ------------------------------- |
+| `touch` | Create a blank file             |
+| `mkdir` | Create a directory/folder       |
+| `cp`    | Copy a file or folder           |
+| `mv`    | Move or rename a file or folder |
+| `rm`    | Remove a file or folder         |
+| `file`  | Determine the type of a file    |
+
+### Creating Files and Folders
+
+Create a blank file:
+
+```bash
+touch note
+```
+
+Create a folder:
+
+```bash
+mkdir mydirectory
+```
+
+`touch` only creates the file. You can use `echo` or a text editor such as `nano` to add content.
+
+### Removing Files and Folders
+
+Remove a file:
+
+```bash
+rm note
+```
+
+Remove a directory and its contents:
+
+```bash
+rm -R mydirectory
+```
+
+`-R` means **recursive**.
+
+### Copying Files
+
+`cp` takes the existing file and the name/location of the copy.
+
+```bash
+cp note note2
+```
+
+This creates `note2` as a copy of `note`.
+
+### Moving and Renaming
+
+`mv` can move a file/folder or rename it.
+
+Rename a file:
+
+```bash
+mv note2 note3
+```
+
+Move a file into another folder:
+
+```bash
+mv note mydirectory/
+```
+
+### Determining File Type
+
+The `file` command tells you what type of file something is.
+
+```bash
+file note
+```
+
+Example output:
+
+```text
+note: ASCII text
+```
+
+A file does **not** necessarily need a file extension such as `.txt`.
+
+### Key takeaway
+
+* `touch` → create
+* `mkdir` → create folder
+* `cp` → copy
+* `mv` → move/rename
+* `rm` → remove
+* `file` → identify file type
+
+
+It allows you to control a remote machine while encrypting the data sent between the devices.
