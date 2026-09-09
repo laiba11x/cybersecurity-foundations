@@ -621,3 +621,189 @@ Windows updates may require a **restart** to complete installation. Modern Windo
 
 **Windows Update keeps Windows and Microsoft products patched and protected against known security issues.**
 
+## Windows Security
+
+**Windows Security** is the central place in Windows for managing security tools that protect the device and its data.
+
+### Protection Areas
+
+The main protection areas are:
+
+* **Virus & threat protection** — protects against malware and other threats.
+* **Firewall & network protection** — manages firewall and network security.
+* **App & browser control** — helps protect against unsafe apps, files and websites.
+* **Device security** — provides security features for the device and hardware.
+
+### Status Icons
+
+Windows Security uses colours to show the security status:
+
+* 🟢 **Green** — device is sufficiently protected.
+* 🟡 **Yellow** — a security recommendation needs attention.
+* 🔴 **Red** — an issue requires immediate attention.
+
+### Key takeaway
+
+**Windows Security provides a central location for monitoring and managing Windows security protections.**
+
+## Virus & Threat Protection
+
+**Virus & threat protection** protects Windows against malware and other threats.
+
+### Current Threats
+
+**Scan options:**
+
+* **Quick scan** — checks common locations where threats are found.
+* **Full scan** — checks all files and running programs.
+* **Custom scan** — allows you to choose specific files or locations.
+
+**Threat history:**
+
+* **Last scan** — shows information about the most recent scan.
+* **Quarantined threats** — isolates detected threats so they cannot run.
+* **Allowed threats** — threats that the user has chosen to allow.
+
+### Virus & Threat Protection Settings
+
+* **Real-time protection** — detects and blocks malware as it attempts to run or install.
+* **Cloud-delivered protection** — provides faster protection using the latest information from Microsoft's cloud.
+* **Automatic sample submission** — sends suspicious sample files to Microsoft for analysis.
+* **Controlled folder access** — helps prevent malicious applications from making unauthorised changes to protected folders.
+* **Exclusions** — files or folders excluded from antivirus scanning. These can create a security risk if they contain malware.
+* **Notifications** — provides alerts about security and device health.
+
+### Virus & Threat Protection Updates
+
+**Check for updates** manually updates Microsoft Defender's security definitions.
+
+### Ransomware Protection
+
+**Controlled folder access** helps protect important files from ransomware and other malicious applications.
+
+### Key takeaway
+
+**Real-time protection detects threats as they happen, while scans can be run manually to check for malware. Be careful when allowing threats or creating antivirus exclusions.**
+
+## Windows Firewall
+
+A **firewall** controls network traffic entering and leaving a device through network ports. It allows or blocks traffic based on configured rules.
+
+### Firewall Profiles
+
+Windows Firewall has three profiles:
+
+* **Domain** – used when the computer can authenticate to an organisation's domain.
+* **Private** – used for trusted networks, such as a home network.
+* **Public** – used for untrusted networks, such as public Wi-Fi in airports or cafés.
+
+Each profile can be configured to:
+
+* Turn the firewall on or off.
+* Block all incoming connections.
+
+**Security tip:** Keep Windows Defender Firewall enabled unless you know exactly what you are doing.
+
+### Allow an App Through Firewall
+
+Windows allows specific applications to communicate through the firewall. Access can be configured separately for **Private** and **Public** networks.
+
+### Advanced Settings
+
+Advanced Firewall settings allow administrators to configure detailed **inbound and outbound rules**.
+
+**Command to open Windows Firewall:** `WF.msc`
+
+### Key Takeaway
+
+A firewall acts as a **barrier between a device and network traffic**, helping prevent unauthorised connections.
+
+## Microsoft Defender SmartScreen
+
+**Microsoft Defender SmartScreen** helps protect Windows against:
+
+* Phishing websites
+* Malware websites and applications
+* Potentially malicious downloads
+
+SmartScreen can be set to:
+
+* **Warn** – alerts the user about potentially unsafe content.
+* **Block** – prevents potentially unsafe content.
+* **Off** – disables the protection.
+
+### Check Apps and Files
+
+SmartScreen checks **unrecognised apps and files downloaded from the web** to help protect the device.
+
+## Exploit Protection
+
+**Exploit Protection** is built into Windows and helps protect the device against attacks that attempt to exploit software vulnerabilities.
+
+**Security tip:** Keep the default protection settings unless you know exactly what you are changing.
+
+### Key Takeaway
+
+SmartScreen helps prevent users from opening or downloading **potentially dangerous content**, while Exploit Protection helps defend against **software exploits**.
+
+## Core Isolation
+
+**Core Isolation** is a Windows security feature that helps protect important parts of the operating system from malicious attacks.
+
+### Memory Integrity
+
+**Memory Integrity** helps prevent attackers from inserting malicious code into **high-security processes**.
+
+**Security tip:** Leave the default settings enabled unless you know what you are changing.
+
+## Trusted Platform Module (TPM)
+
+A **Trusted Platform Module (TPM)** is a hardware-based security component designed to perform **cryptographic operations** and protect sensitive security information.
+
+TPM has physical security mechanisms that make it **tamper-resistant**, helping prevent malware from interfering with its security functions.
+
+### Key Takeaway
+
+* **Core Isolation** → protects important Windows processes.
+* **Memory Integrity** → helps prevent malicious code from being inserted into high-security processes.
+* **TPM** → provides hardware-based security and cryptographic functions.
+
+## BitLocker
+
+**BitLocker** is a Windows feature that **encrypts a drive** to protect data if a computer is lost, stolen, or improperly disposed of.
+
+* It helps prevent unauthorised people from accessing data on the drive.
+* BitLocker provides stronger protection when used with a **TPM (Trusted Platform Module)**.
+* **TPM** helps protect encryption keys and checks that the computer has not been tampered with while offline.
+* BitLocker is available on **Windows Pro** editions, not Windows Home.
+* The TryHackMe VM does **not** include BitLocker.
+
+### Key Takeaway
+
+**BitLocker = drive encryption that protects data from unauthorised access.**
+
+## Volume Shadow Copy Service (VSS)
+
+**Volume Shadow Copy Service (VSS)** creates a consistent **snapshot (point-in-time copy)** of data for backup and recovery.
+
+### Shadow Copies
+
+* Shadow Copies are stored in the **System Volume Information** folder on protected drives.
+* They can be used to:
+
+  * Create a restore point
+  * Perform a system restore
+  * Configure restore settings
+  * Delete restore points
+
+### Security
+
+Malware, especially **ransomware**, may attempt to delete Shadow Copies so that victims cannot restore their systems.
+
+This is why having **offline or off-site backups** is important.
+
+### Key Takeaway
+
+**VSS → creates snapshots that can help recover data or restore Windows after an incident.**
+
+
