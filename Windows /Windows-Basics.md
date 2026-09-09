@@ -589,3 +589,35 @@ It contains information such as:
 ### Key takeaway
 
 **The Windows Registry stores important system and application configuration information. `regedit.exe` opens the Registry Editor.**
+
+## Windows Update
+
+**Windows Update** is a Microsoft service that provides:
+
+* Security updates
+* Feature updates
+* Bug fixes and patches
+* Updates for Microsoft products such as Microsoft Defender
+
+### Patch Tuesday
+
+Microsoft typically releases updates on the **second Tuesday of each month**, known as **Patch Tuesday**.
+
+Critical security updates do not have to wait until Patch Tuesday and can be released urgently when needed.
+
+### Windows Update Command
+
+Windows Update can also be opened using:
+
+`control /name Microsoft.WindowsUpdate`
+
+### Why Windows Updates Matter
+
+Keeping Windows updated helps protect systems from known security vulnerabilities.
+
+Windows updates may require a **restart** to complete installation. Modern Windows versions allow updates to be postponed, but they cannot be postponed indefinitely.
+
+### Key takeaway
+
+**Windows Update keeps Windows and Microsoft products patched and protected against known security issues.**
+
