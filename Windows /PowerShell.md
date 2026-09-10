@@ -44,3 +44,115 @@
 **PowerShell → objects**
 
 PowerShell's object-based approach makes system administration, automation and scripting more powerful and flexible.
+
+# PowerShell – Basic Commands
+
+## Launching PowerShell
+
+PowerShell can be opened in several ways:
+
+* Start Menu → search **PowerShell**
+* `Win + R` → type `powershell`
+* From **Command Prompt**, type `powershell`
+* File Explorer address bar → type `powershell`
+
+### PowerShell Prompt
+
+```powershell
+PS C:\Users\captain>
+```
+
+`PS` shows that the current shell is PowerShell.
+
+---
+
+## Cmdlets
+
+PowerShell commands are called **cmdlets** (command-lets).
+
+They normally follow the:
+
+**Verb-Noun** format
+
+Examples:
+
+* `Get-Content` → gets the contents of a file
+* `Set-Location` → changes the current directory
+* `Get-Date` → gets the current date and time
+
+The **Verb** describes the action and the **Noun** describes what the action operates on.
+
+---
+
+## Get-Command
+
+`Get-Command` lists commands available in the current PowerShell session.
+
+```powershell
+Get-Command
+```
+
+You can filter commands by type:
+
+```powershell
+Get-Command -CommandType "Function"
+```
+
+---
+
+## Get-Help
+
+`Get-Help` provides information about how to use a cmdlet.
+
+```powershell
+Get-Help Get-Date
+```
+
+Useful options include:
+
+```powershell
+Get-Help Get-Date -Examples
+Get-Help Get-Date -Detailed
+Get-Help Get-Date -Full
+```
+
+---
+
+## Aliases
+
+PowerShell has **aliases**, which are shortcuts or alternative names for commands.
+
+```powershell
+Get-Alias
+```
+
+Examples:
+
+| Alias | Cmdlet           |
+| ----- | ---------------- |
+| `cd`  | `Set-Location`   |
+| `dir` | `Get-ChildItem`  |
+| `cat` | `Get-Content`    |
+| `%`   | `ForEach-Object` |
+| `?`   | `Where-Object`   |
+
+---
+
+## PowerShell Modules
+
+**Modules** are collections of PowerShell commands/cmdlets.
+
+`Find-Module` searches online repositories such as the **PowerShell Gallery**:
+
+```powershell
+Find-Module -Name "PowerShell*"
+```
+
+`Install-Module` downloads and installs a module:
+
+```powershell
+Install-Module -Name "PowerShellGet"
+```
+
+**Note:** These commands require an internet connection. The TryHackMe machine may not have internet access, so they may not work in the lab.
+
