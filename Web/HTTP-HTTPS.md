@@ -60,3 +60,41 @@ When inspecting a request in browser developer tools, I can see information such
 ## Practical Learning
 
 I used browser developer tools and the Network tab to inspect GET requests made when loading a webpage. This helped me understand what happens behind the scenes when I visit a website.
+
+# HTTP and HTTPS
+
+## What is HTTP?
+
+HTTP (Hypertext Transfer Protocol) is used by web browsers to communicate with web servers.
+
+HTTPS is the secure version of HTTP.
+
+### Common HTTP Methods
+
+* **GET** – retrieves data from a server.
+* **POST** – sends new data to a server, such as submitting a form.
+* **PUT** – creates or updates/overwrites a resource.
+* **DELETE** – deletes a specified resource.
+
+### Common Ports
+
+* **HTTP:** TCP port **80**
+* **HTTPS:** TCP port **443**
+* Other common ports: **8080** and **8443**
+
+## HTTP Requests
+
+A browser can send a request such as:
+
+`GET / HTTP/1.1`
+
+`Host: example.com`
+
+The server then sends back an HTTP response containing information such as the requested page, server details and other headers.
+
+You can use **Telnet** to manually communicate with a web server using HTTP, which is useful for troubleshooting.
+
+### Key idea
+
+HTTP defines how a browser and web server communicate using requests and responses.
+
