@@ -111,3 +111,61 @@ CMD commands can quickly provide information about a Windows system, its users, 
 
 **CMD allows users and security professionals to interact with Windows and gather system and network information using commands.**
 
+# Windows Command Prompt (CMD)
+
+## CLI vs GUI
+
+* **GUI (Graphical User Interface):** Uses windows, menus, buttons and icons.
+* **CLI (Command-Line Interface):** Uses typed commands to interact with a computer.
+* GUIs are generally easier for beginners, while CLIs become faster and more efficient once commands are familiar.
+
+## Advantages of a CLI
+
+### Lower Resource Usage
+
+* CLIs use fewer system resources than graphics-heavy GUIs.
+* Useful for older hardware, systems with limited memory and cloud systems.
+
+### Automation
+
+* Commands can be placed into scripts or batch files.
+* This makes repetitive tasks easier to automate.
+
+### Remote Management
+
+* CLI tools such as **SSH** can be used to manage remote systems.
+* Useful for servers, routers and IoT devices, especially over slower connections.
+
+## Windows Command Prompt
+
+* **Command Prompt (`cmd.exe`)** is the default command-line interpreter in Windows.
+* It can be used to:
+
+  * Display system information
+  * Check and troubleshoot network configuration
+  * Manage files and folders
+  * Check running processes
+
+## SSH
+
+**SSH (Secure Shell)** allows you to securely connect to and manage a remote computer through a command line.
+
+Example:
+
+```bash
+ssh user@10.130.142.186
+```
+
+The general format is:
+
+```bash
+ssh username@IP-address
+```
+
+On the first connection, SSH may ask you to confirm that you trust the remote host.
+
+## Key Takeaway
+
+A CLI can be faster, use fewer resources, be automated with scripts, and make remote system management easier.
+
+
