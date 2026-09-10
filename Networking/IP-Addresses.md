@@ -79,3 +79,15 @@ A **router** forwards data packets between different networks.
 * The router examines the destination IP address.
 * It chooses an appropriate route to forward the packet towards its destination.
 * A packet may pass through multiple routers before reaching its destination.
+
+## How Routers Forward Packets
+
+* A router examines the packet's **destination IP address**.
+* It checks its **routing information** to decide where the packet should go next.
+* The router sends the packet through the appropriate network link.
+* Each router repeats this process until the packet reaches the router for the **destination network**.
+* The packet is then forwarded to the destination host.
+* The process is reversed when the response travels back to the original host.
+
+**Key idea:** Routers use the **destination IP address** to determine where to forward packets.
+
