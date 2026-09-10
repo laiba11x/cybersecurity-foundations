@@ -98,3 +98,44 @@ You can use **Telnet** to manually communicate with a web server using HTTP, whi
 
 HTTP defines how a browser and web server communicate using requests and responses.
 
+## HTTP vs HTTPS
+
+### HTTP
+
+HTTP normally uses **TCP port 80**.
+
+Before HTTP communication:
+
+1. DNS resolves the domain name to an IP address.
+2. The client establishes a **TCP three-way handshake**.
+3. The client and server communicate using HTTP.
+
+HTTP traffic is sent in **cleartext**, so it can potentially be intercepted and read.
+
+### HTTPS
+
+HTTPS means **HTTP over TLS**.
+
+Before HTTP communication:
+
+1. DNS resolves the domain name.
+2. A **TCP three-way handshake** is established.
+3. A **TLS session** is established.
+4. HTTP communication takes place over the encrypted TLS connection.
+
+HTTPS normally uses **TCP port 443**.
+
+### Why HTTPS is Secure
+
+TLS encrypts the HTTP traffic, so someone capturing the packets cannot normally read the contents without the necessary encryption keys.
+
+In Wireshark, HTTPS traffic may appear as **Application Data** because the HTTP contents are encrypted.
+
+### Key idea
+
+**HTTP = HTTP over TCP**
+
+**HTTPS = HTTP over TLS over TCP**
+
+TLS adds security without requiring changes to TCP, IP, or HTTP itself.
+
