@@ -319,3 +319,215 @@ netstat -abon
 
 This can show which programmes are using particular ports and their associated PIDs.
 
+## Windows CMD: Files & Directories
+
+### `cd`
+
+Shows the current directory when used without a parameter.
+
+```cmd
+cd
+```
+
+Move into a directory:
+
+```cmd
+cd Users
+```
+
+Move up one level:
+
+```cmd
+cd ..
+```
+
+### `dir`
+
+Lists files and folders in the current directory.
+
+```cmd
+dir
+```
+
+Useful options:
+
+* `dir /a` → includes hidden and system files
+* `dir /s` → includes files in subdirectories
+
+### `tree`
+
+Displays folders and subfolders in a tree structure.
+
+```cmd
+tree
+```
+
+### `mkdir`
+
+Creates a new directory (folder).
+
+```cmd
+mkdir backup_files
+```
+
+### `rmdir`
+
+Deletes a directory.
+
+```cmd
+rmdir backup_files
+```
+
+### `type`
+
+Displays the contents of a text file.
+
+```cmd
+type file.txt
+```
+
+For longer files, use `more` to view the contents page by page.
+
+### `copy`
+
+Copies a file to another location.
+
+```cmd
+copy test.txt test2.txt
+```
+
+### `move`
+
+Moves a file to another location.
+
+```cmd
+move test2.txt ..
+```
+
+### `del` / `erase`
+
+Deletes a file.
+
+```cmd
+del test.txt
+```
+
+or
+
+```cmd
+erase test.txt
+```
+
+### Wildcards
+
+The `*` wildcard can represent multiple files.
+
+Example:
+
+```cmd
+copy *.md C:\Markdown
+```
+
+This copies all `.md` files into `C:\Markdown`.
+
+## Quick Reference
+
+| Command         | Purpose                     |
+| --------------- | --------------------------- |
+| `cd`            | Change/show directory       |
+| `dir`           | List files and folders      |
+| `tree`          | Show folder structure       |
+| `mkdir`         | Create a folder             |
+| `rmdir`         | Delete a folder             |
+| `type`          | Display a text file         |
+| `copy`          | Copy files                  |
+| `move`          | Move files                  |
+| `del` / `erase` | Delete files                |
+| `*`             | Wildcard for multiple files |
+
+## Process Management
+
+### `tasklist`
+
+Lists the currently running processes on a Windows system.
+
+```cmd
+tasklist
+```
+
+### Filtering Processes
+
+You can filter the results to find a specific process.
+
+```cmd
+tasklist /FI "imagename eq sshd.exe"
+```
+
+* `/FI` = applies a filter
+* `imagename eq` = image name equals
+* `sshd.exe` = process being searched for
+
+### `taskkill`
+
+Terminates a running process using its **Process ID (PID)**.
+
+```cmd
+taskkill /PID 4567
+```
+
+Replace `4567` with the PID of the process you want to terminate.
+
+## Quick Reference
+
+| Command         | Purpose                           |
+| --------------- | --------------------------------- |
+| `tasklist`      | List running processes            |
+| `tasklist /FI`  | Filter processes                  |
+| `taskkill /PID` | Terminate a process using its PID |
+
+## Additional Commands
+
+Some useful commands not covered in detail:
+
+* `chkdsk` → Checks the file system and disk volumes for errors and bad sectors.
+* `driverquery` → Lists installed device drivers.
+* `sfc /scannow` → Scans system files for corruption and attempts to repair them.
+
+## Getting Help
+
+Most Windows commands support:
+
+```cmd
+command /?
+```
+
+This displays the command's help page and available options.
+
+## `more`
+
+`more` can be used in two ways:
+
+```cmd
+more file.txt
+```
+
+Displays a text file one page at a time.
+
+```cmd
+some_command | more
+```
+
+Pipes long command output into `more`, allowing it to be viewed page by page.
+
+## Key Takeaway
+
+Windows CMD can be used to:
+
+* View system information
+* Check network configuration
+* Navigate and manage files
+* View and manage running processes
+* Troubleshoot systems
+
+Knowing how to use `/?` is useful when learning an unfamiliar command.
+
