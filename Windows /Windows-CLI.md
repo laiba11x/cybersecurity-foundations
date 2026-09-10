@@ -168,4 +168,154 @@ On the first connection, SSH may ask you to confirm that you trust the remote ho
 
 A CLI can be faster, use fewer resources, be automated with scripts, and make remote system management easier.
 
+## Windows CMD: Basic Commands
+
+### PATH
+
+* The **PATH** is a list of folders where Windows looks for executable commands.
+* Use `set` to view environment variables, including the `Path` variable.
+
+```cmd
+set
+```
+
+### `ver`
+
+* Displays the Windows operating system version.
+
+```cmd
+ver
+```
+
+### `systeminfo`
+
+* Displays detailed information about the system, including:
+
+  * OS information
+  * Host name
+  * Processor
+  * Memory
+  * System configuration
+
+```cmd
+systeminfo
+```
+
+### `| more`
+
+* The **pipe (`|`)** sends the output of one command into another command.
+* `more` displays long output **one page at a time**.
+
+Example:
+
+```cmd
+driverquery | more
+```
+
+* Press **Spacebar** to view the next page.
+* Press **Ctrl + C** to stop.
+
+### `help`
+
+* Displays help information for a command.
+
+```cmd
+help
+```
+
+### `cls`
+
+* Clears the Command Prompt screen.
+
+```cmd
+cls
+```
+
+## Windows CMD: Network Commands
+
+### `ipconfig`
+
+Displays basic network configuration, including:
+
+* IPv4 address
+* IPv6 address
+* Subnet mask
+* Default gateway
+
+```cmd
+ipconfig
+```
+
+### `ipconfig /all`
+
+Displays more detailed network information, including:
+
+* MAC address
+* DHCP status
+* DNS servers
+* IP address
+* Default gateway
+
+```cmd
+ipconfig /all
+```
+
+### `ping`
+
+Tests whether a target can be reached over the network using ICMP.
+
+```cmd
+ping example.com
+```
+
+It shows replies, packet loss and response time.
+
+### `tracert`
+
+**Tracert (Trace Route)** shows the network path taken to reach a target.
+
+```cmd
+tracert example.com
+```
+
+It shows the different network hops/routers along the route.
+
+### `nslookup`
+
+Looks up a domain name and returns its IP address using a DNS server.
+
+```cmd
+nslookup example.com
+```
+
+You can specify a DNS server:
+
+```cmd
+nslookup example.com 1.1.1.1
+```
+
+### `netstat`
+
+Displays current network connections and listening ports.
+
+```cmd
+netstat
+```
+
+Useful options:
+
+| Option | Purpose                                             |
+| ------ | --------------------------------------------------- |
+| `-a`   | Shows all connections and listening ports           |
+| `-b`   | Shows the programme associated with connections/ports |
+| `-o`   | Shows the process ID (PID)                          |
+| `-n`   | Shows addresses and ports numerically               |
+
+These can be combined:
+
+```cmd
+netstat -abon
+```
+
+This can show which programmes are using particular ports and their associated PIDs.
 
