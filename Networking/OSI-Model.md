@@ -234,3 +234,52 @@ Provides network services directly to applications such as web browsers. HTTP an
 * **Layer 3:** IP addresses and routing
 * **Layer 4:** TCP/UDP
 * **Layer 7:** Application protocols such as HTTP and DNS
+
+## TCP/IP Model
+
+**TCP/IP (Transmission Control Protocol/Internet Protocol)** is an implemented networking model developed in the 1970s by the US Department of Defense.
+
+The standard TCP/IP model has **4 layers**:
+
+| TCP/IP Layer | Corresponding OSI Layers | Examples                    |
+| ------------ | ------------------------ | --------------------------- |
+| Application  | OSI 5, 6, 7              | HTTP, HTTPS, FTP, SMTP, SSH |
+| Transport    | OSI 4                    | TCP, UDP                    |
+| Internet     | OSI 3                    | IP, ICMP, IPSec             |
+| Link         | OSI 2                    | Ethernet, WiFi              |
+
+### Layer 1 — Link
+
+Handles communication between devices on the same network segment.
+
+### Layer 2 — Internet
+
+Handles logical addressing and routing between networks. **IP** is the main example.
+
+### Layer 3 — Transport
+
+Provides end-to-end communication between hosts. **TCP** and **UDP** are the main protocols.
+
+### Layer 4 — Application
+
+Provides network services used by applications. It combines the **OSI Application, Presentation and Session layers**.
+
+Examples include:
+
+* HTTP / HTTPS
+* FTP
+* SMTP
+* IMAP
+* SSH
+* Telnet
+
+### OSI vs TCP/IP
+
+The TCP/IP model combines three OSI layers:
+
+**OSI Layers 5 + 6 + 7 → TCP/IP Application Layer**
+
+The TCP/IP model therefore has **4 layers**, while the OSI model has **7 layers**.
+
+> Some modern textbooks use a **5-layer TCP/IP model** by separating the Physical layer from the Link layer.
+
