@@ -46,3 +46,19 @@ It **cannot prove the server's authenticity** in the same way as a certificate s
 ### Key idea
 
 **TLS protects data in transit by providing confidentiality and integrity, while certificates help authenticate the communicating party.**
+
+## TLS-Secured Email Protocols
+
+TLS can be added to email protocols in the same way it is added to HTTP.
+
+| Protocol | Insecure Port | Secure Version | Secure Port |
+| -------- | ------------: | -------------- | ----------: |
+| HTTP     |            80 | HTTPS          |         443 |
+| SMTP     |            25 | SMTPS          |   465 / 587 |
+| POP3     |           110 | POP3S          |         995 |
+| IMAP     |           143 | IMAPS          |         993 |
+
+### Key idea
+
+Adding TLS encrypts the communication and protects data from being read or modified while travelling across the network.
+
