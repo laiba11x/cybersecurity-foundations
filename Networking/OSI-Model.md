@@ -181,3 +181,56 @@ It contains the **protocols and rules** that applications use to communicate ove
 
 **Application Layer = protocols and services that applications use to communicate over a network.**
 
+# OSI Model
+
+The **OSI (Open Systems Interconnection) model** is a conceptual framework that explains how communication occurs across computer networks.
+
+It has **7 layers**, numbered from 1 at the bottom to 7 at the top.
+
+**Mnemonic:** *Please Do Not Throw Spinach Pizza Away*
+
+| Layer | Name         | Main Function                                             | Examples                     |
+| ----- | ------------ | --------------------------------------------------------- | ---------------------------- |
+| 7     | Application  | Network services for applications                         | HTTP, FTP, DNS, SMTP, IMAP   |
+| 6     | Presentation | Encoding, encryption and compression                      | ASCII, Unicode, JPEG, PNG    |
+| 5     | Session      | Establishes and manages sessions                          | NFS, RPC                     |
+| 4     | Transport    | End-to-end communication and segmentation                 | TCP, UDP                     |
+| 3     | Network      | Logical addressing and routing                            | IP, ICMP, IPSec              |
+| 2     | Data Link    | Communication between devices on the same network segment | Ethernet, WiFi               |
+| 1     | Physical     | Physical transmission of data                             | Cables, fibre, radio signals |
+
+### Layer 1 — Physical
+
+Deals with the physical medium used to transmit **0s and 1s**, such as Ethernet cables, fibre and wireless signals.
+
+### Layer 2 — Data Link
+
+Handles communication between devices on the **same network segment**. Uses **MAC addresses**.
+
+### Layer 3 — Network
+
+Handles **logical addressing and routing between different networks**. IP is a key example.
+
+### Layer 4 — Transport
+
+Provides **end-to-end communication** between applications. Main protocols are TCP and UDP.
+
+### Layer 5 — Session
+
+Establishes, maintains and synchronises communication sessions between applications.
+
+### Layer 6 — Presentation
+
+Handles **data encoding, compression and encryption** so applications can understand the data.
+
+### Layer 7 — Application
+
+Provides network services directly to applications such as web browsers. HTTP and DNS are examples.
+
+### Key Things to Remember
+
+* **Layer 1:** Physical
+* **Layer 2:** MAC addresses
+* **Layer 3:** IP addresses and routing
+* **Layer 4:** TCP/UDP
+* **Layer 7:** Application protocols such as HTTP and DNS
