@@ -346,3 +346,650 @@ there are infinitely many possible values of `x`, such as `4`, `9`, `14`, `19`, 
 
 * **XOR** compares binary bits and is useful in cryptographic algorithms.
 * **Modulo** gives the remainder after division and is widely used in cryptographic mathematics.
+
+## Key Exchange
+
+Symmetric encryption is fast, but it has a problem: **how do we securely share the secret key?**
+
+Asymmetric cryptography can help solve this problem.
+
+### Simple Analogy
+
+Imagine sending a secret code to someone:
+
+* The **secret code** = symmetric encryption cipher and key
+* The person's **lock** = their public key
+* The person's **key to the lock** = their private key
+
+You can put the secret code inside a box and lock it using their public key. Only the person with the matching private key can unlock it.
+
+### In Cryptography
+
+```text
+Symmetric key
+      ↓
+Encrypt using server's public key
+      ↓
+Send securely to server
+      ↓
+Server decrypts using private key
+      ↓
+Both sides now have the symmetric key
+```
+
+After the symmetric key has been securely established, the communication can use **symmetric encryption**, which is much faster.
+
+### Why Use Both?
+
+* **Asymmetric encryption** → useful for securely establishing/exchanging keys.
+* **Symmetric encryption** → useful for the actual communication because it is faster.
+
+In real systems, additional cryptography such as **digital signatures and certificates** can be used to verify that you are communicating with the legitimate server.
+
+### Key Takeaway
+
+Asymmetric cryptography can be used to **securely establish a symmetric encryption key**, after which the faster symmetric encryption can protect the communication.
+
+## RSA
+
+**RSA (Rivest–Shamir–Adleman)** is an asymmetric encryption algorithm that allows secure communication over an insecure channel.
+
+### Why Is RSA Secure?
+
+RSA relies on the difficulty of **factoring very large numbers**.
+
+It is easy to multiply two large prime numbers together:
+
+```text
+p × q = n
+```
+
+However, given a very large `n`, finding the original prime numbers `p` and `q` is extremely difficult.
+
+RSA uses very large prime numbers in real-world applications, making factoring the resulting number computationally impractical.
+
+### RSA Keys
+
+RSA uses a **public key** and a **private key**.
+
+* **Public key:** `(n, e)` → can be shared with others.
+* **Private key:** `(n, d)` → must be kept secret.
+
+The public key is used for encryption, while the private key is used for decryption.
+
+### Basic RSA Process
+
+For encryption:
+
+```text
+c = m^e mod n
+```
+
+For decryption:
+
+```text
+m = c^d mod n
+```
+
+Where:
+
+| Variable | Meaning                        |
+| -------- | ------------------------------ |
+| `p`      | Large prime number             |
+| `q`      | Large prime number             |
+| `n`      | `p × q`                        |
+| `e`      | Public exponent                |
+| `d`      | Private exponent               |
+| `m`      | Original message / plaintext   |
+| `c`      | Encrypted message / ciphertext |
+
+### Simplified Example
+
+If:
+
+```text
+p = 157
+q = 199
+```
+
+Then:
+
+```text
+n = p × q = 31243
+```
+
+The public key is:
+
+```text
+(n, e)
+```
+
+The private key is:
+
+```text
+(n, d)
+```
+
+A message is encrypted using the public key and decrypted using the private key.
+
+### RSA in CTFs
+
+RSA appears frequently in cryptography CTF challenges.
+
+You may be given some combination of:
+
+`p`, `q`, `n`, `e`, `d`, `m`, and `c`
+
+and need to calculate missing values or decrypt the ciphertext.
+
+### Key Takeaway
+
+RSA is based on **asymmetric cryptography** and the difficulty of **factoring very large numbers**.
+
+Remember:
+
+**Public key = `(n, e)`**
+
+**Private key = `(n, d)`**
+
+**`m` = plaintext**
+
+**`c` = ciphertext**
+
+## Diffie-Hellman Key Exchange
+
+**Diffie-Hellman (DH)** is a method for two parties to establish a **shared secret key over an insecure communication channel**.
+
+The important part is that the actual shared secret is **never directly sent across the network**.
+
+The shared secret can then be used for **symmetric encryption**.
+
+### Basic Process
+
+Alice and Bob publicly agree on:
+
+* `p` = a large prime number
+* `g` = a generator
+
+These values are **public** and can be seen by an attacker.
+
+Each person then chooses their own private number:
+
+* Alice chooses `a`
+* Bob chooses `b`
+
+These private values are **never shared**.
+
+### Step 1 — Calculate Public Keys
+
+Alice calculates:
+
+```text
+A = g^a mod p
+```
+
+Bob calculates:
+
+```text
+B = g^b mod p
+```
+
+They exchange `A` and `B`.
+
+The public keys can be seen by an attacker, but the private values `a` and `b` remain secret.
+
+### Step 2 — Calculate the Shared Secret
+
+Alice uses Bob's public key and her private key:
+
+```text
+B^a mod p
+```
+
+Bob uses Alice's public key and his private key:
+
+```text
+A^b mod p
+```
+
+Both calculations produce the **same shared secret**:
+
+```text
+g^(ab) mod p
+```
+
+### Example
+
+Public values:
+
+```text
+p = 29
+g = 3
+```
+
+Private values:
+
+```text
+Alice: a = 13
+Bob:   b = 15
+```
+
+Public keys:
+
+```text
+Alice: A = 3^13 mod 29 = 19
+Bob:   B = 3^15 mod 29 = 26
+```
+
+They exchange `19` and `26`.
+
+Alice calculates:
+
+```text
+26^13 mod 29 = 10
+```
+
+Bob calculates:
+
+```text
+19^15 mod 29 = 10
+```
+
+Therefore, they both have the same shared secret:
+
+```text
+Shared secret = 10
+```
+
+### Important Points
+
+* `p` and `g` → public
+* `a` and `b` → private
+* `A` and `B` → public keys
+* The shared secret → calculated independently by both parties
+* The shared secret → never directly transmitted
+
+### Diffie-Hellman vs RSA
+
+Diffie-Hellman is mainly used for **key agreement**.
+
+RSA can be used for **authentication, digital signatures and other purposes**.
+
+In real-world security protocols, Diffie-Hellman and RSA or other cryptographic methods can be used together.
+
+### Key Takeaway
+
+**Diffie-Hellman allows two parties to create the same secret key without sending the secret key itself over the network.**
+
+# SSH Authentication
+
+## Authenticating the Server
+
+When connecting to an SSH server for the first time, the SSH client shows the server's public key fingerprint.
+
+```bash
+ssh 10.10.244.173
+```
+
+You may see:
+
+```text
+The authenticity of host '10.10.244.173' can't be established.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+This is asking you to verify that you trust the server.
+
+Once you accept the key, SSH stores it in:
+
+```text
+~/.ssh/known_hosts
+```
+
+On future connections, SSH checks the server's key against the stored key. If the key changes unexpectedly, SSH will warn you. This could indicate a **Man-in-the-Middle (MITM) attack**, where another machine is pretending to be the real server.
+
+---
+
+## Authenticating the Client
+
+After verifying the server, the client also needs to prove its identity.
+
+SSH can authenticate users with passwords, but **key-based authentication** is commonly used because it is more secure.
+
+SSH key authentication uses a pair of keys:
+
+* **Public key** — shared with the server.
+* **Private key** — kept secret on the user's machine.
+
+The `ssh-keygen` command can be used to generate an SSH key pair.
+
+```bash
+ssh-keygen -t ed25519
+```
+
+Common SSH key types include:
+
+* RSA
+* DSA
+* ECDSA
+* Ed25519
+
+---
+
+## SSH Private Keys
+
+The private key must be kept secret and should be treated like a password.
+
+Never share a private SSH key.
+
+A passphrase can be used to encrypt the private key. The passphrase is only used locally to unlock the key and is **not sent to the SSH server**.
+
+Private keys should have restrictive permissions so that only the owner can read or modify them.
+
+```bash
+chmod 600 private_key
+```
+
+---
+
+## Authorised Keys
+
+SSH keys are normally stored in:
+
+```text
+~/.ssh/
+```
+
+The server uses the following file to store public keys that are allowed to authenticate:
+
+```text
+~/.ssh/authorized_keys
+```
+
+The `authorized_keys` file contains the **public keys** that the server trusts.
+
+The private key should remain on the client machine.
+
+---
+
+## Connecting Using an SSH Key
+
+You can specify which private key SSH should use with:
+
+```bash
+ssh -i privateKeyFileName user@host
+```
+
+For example:
+
+```bash
+ssh -i id_ed25519 user@10.10.244.173
+```
+
+---
+
+## Key Security
+
+The basic idea is:
+
+```text
+Client                         Server
+------                         ------
+
+Private key  ────────────────>  Public key
+   🔒                              🔑
+Keep secret                    Can be shared
+```
+
+If someone obtains your private key, they may be able to access systems that trust that key.
+
+**Never commit private SSH keys to GitHub.**
+
+### Key files to remember
+
+```text
+~/.ssh/id_ed25519       → Private key
+~/.ssh/id_ed25519.pub   → Public key
+~/.ssh/authorized_keys  → Public keys trusted by a server
+~/.ssh/known_hosts      → Server keys previously trusted by the client
+```
+
+# Digital Signatures & Certificates
+
+## Digital Signatures
+
+A digital signature is used to prove the **authenticity and integrity** of a digital message or document.
+
+It can help prove:
+
+* **Who created or signed the file**
+* **That the file has not been changed**
+
+Digital signatures use **asymmetric cryptography**.
+
+The sender uses their **private key** to create the signature. The recipient can use the sender's **public key** to verify it.
+
+The private key must remain secret because it is used to prove that the owner signed the document.
+
+### Digital Signature Process
+
+A common approach is:
+
+1. A hash is created from the original document.
+2. The hash is signed using the sender's private key.
+3. The original document and digital signature are sent to the recipient.
+4. The recipient uses the sender's public key to verify the signature.
+5. The recipient can calculate the hash of the received document and compare it with the signed hash.
+
+If the hashes match, this provides evidence that the document has not been changed.
+
+### Digital Signature vs Electronic Signature
+
+A digital signature is different from simply placing an image of a handwritten signature onto a document.
+
+An image of a signature can easily be copied and pasted onto another document, so it does not prove the document's integrity.
+
+A digital signature uses cryptography to provide stronger evidence of authenticity and integrity.
+
+---
+
+## Certificates
+
+Digital certificates are another important use of **public-key cryptography**.
+
+Certificates help prove the identity of websites and are commonly used with **HTTPS**.
+
+For example, when visiting a website such as `tryhackme.com`, your browser needs to know that it is communicating with the legitimate website.
+
+The website uses a **TLS certificate** to prove its identity.
+
+---
+
+## Certificate Authorities (CA)
+
+A **Certificate Authority (CA)** is a trusted organisation that issues and signs digital certificates.
+
+Certificates use a **chain of trust**.
+
+For example:
+
+```text
+Root CA
+   ↓
+Trusted organisation / CA
+   ↓
+Website certificate
+   ↓
+Website
+```
+
+Your operating system and browser come with a list of trusted **Root Certificate Authorities**.
+
+If a website's certificate can be traced back to a trusted Root CA, the browser can trust the certificate.
+
+---
+
+## HTTPS and TLS Certificates
+
+Websites that use HTTPS use **TLS certificates** to help establish secure connections and authenticate the website.
+
+A website owner can obtain a TLS certificate from a Certificate Authority.
+
+**Let's Encrypt** provides free TLS certificates for domains that meet its validation requirements.
+
+### Key Points
+
+* Digital signatures prove **authenticity and integrity**.
+* A **private key** is used to create a digital signature.
+* A **public key** is used to verify the signature.
+* Certificates help prove the identity of websites.
+* **Certificate Authorities (CAs)** issue and sign certificates.
+* Browsers and operating systems trust certain Root CAs.
+* HTTPS uses **TLS certificates**.
+
+# PGP & GPG
+
+## What is PGP?
+
+**PGP (Pretty Good Privacy)** is software used for:
+
+* Encrypting files and messages
+* Digital signing
+* Protecting the confidentiality and integrity of information
+
+**GnuPG (GPG)** is an open-source implementation of the OpenPGP standard.
+
+GPG is commonly used to protect email messages and can also be used to digitally sign emails.
+
+---
+
+## Generating a GPG Key
+
+A GPG key pair can be generated using:
+
+```bash
+gpg --full-gen-key
+```
+
+During key generation, you can choose:
+
+* The type of key
+* The cryptographic algorithm
+* How long the key should remain valid
+* Your name
+* Your email address
+* An optional comment
+
+GPG supports different key types, including RSA, DSA and ECC.
+
+---
+
+## GPG Key Pair
+
+Like other public-key cryptography systems, GPG uses a **public key and private key**.
+
+* **Public key** → can be shared with other people.
+* **Private key** → must be kept secret.
+
+If someone wants to send you an encrypted message, they can encrypt it using your **public key**.
+
+You then use your **private key** to decrypt the message.
+
+```text
+Sender
+   │
+   │ Encrypts using your public key
+   ↓
+Encrypted message
+   │
+   ↓
+You
+   │
+   │ Decrypt using your private key
+   ↓
+Original message
+```
+
+---
+
+## Protecting GPG Private Keys
+
+GPG private keys can be protected with a **passphrase**, similar to SSH private keys.
+
+A passphrase adds protection if someone obtains the private key.
+
+In CTFs, GPG keys may sometimes need to be cracked if they are protected by a weak passphrase.
+
+Tools such as **gpg2john** and **John the Ripper** can be used to attempt to recover a passphrase.
+
+---
+
+## Importing a GPG Key
+
+If you have a backup of a GPG key, you can import it using:
+
+```bash
+gpg --import backup.key
+```
+
+This allows you to use the imported key again.
+
+---
+
+## Decrypting a GPG File
+
+A GPG-encrypted file can be decrypted using:
+
+```bash
+gpg --decrypt confidential_message.gpg
+```
+
+### Key Points
+
+* **PGP** = Pretty Good Privacy
+* **GPG/GnuPG** = open-source implementation of OpenPGP
+* GPG can encrypt, decrypt and digitally sign information.
+* Public keys can be shared.
+* Private keys must be kept secret.
+* A public key can be used to encrypt a message for the key owner.
+* The corresponding private key is used to decrypt it.
+* GPG keys can be backed up and imported onto another computer.
+
+# Cryptanalysis & Attacks
+
+## Cryptography
+
+**Cryptography** is the science of protecting communication and data using codes, ciphers and other security techniques.
+
+## Cryptanalysis
+
+**Cryptanalysis** is the study of methods used to break or bypass cryptographic security systems, often without knowing the secret key.
+
+## Brute-Force Attack
+
+A **brute-force attack** tries every possible password or key combination until the correct one is found.
+
+The larger and more complex the password or key, the more difficult a brute-force attack becomes.
+
+## Dictionary Attack
+
+A **dictionary attack** tries words from a list or dictionary instead of trying every possible combination.
+
+This is useful when a password is likely to be a common word or a combination of common words.
+
+### Key Differences
+
+| Attack            | How it works                                        |
+| ----------------- | --------------------------------------------------- |
+| Brute force       | Tries every possible combination                    |
+| Dictionary attack | Tries words and common combinations from a wordlist |
+
+## Key Takeaways
+
+* **Cryptography** → protects data and communication.
+* **Cryptanalysis** → attempts to break or bypass cryptographic security.
+* **Brute force** → tries every possible combination.
+* **Dictionary attack** → tries likely words or combinations from a wordlist.
+* Public-key cryptography includes technologies such as **RSA, Diffie-Hellman, SSH keys, digital signatures, certificates and OpenPGP**.
+* **Hashing** is a separate topic and is the next area to learn.
+
