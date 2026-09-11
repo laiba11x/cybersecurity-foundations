@@ -378,3 +378,424 @@ For authentication, the application does not need to recover the original passwo
 * Salts do not need to be secret.
 * Examples of password-hashing algorithms: **Argon2, Scrypt, Bcrypt and PBKDF2**.
 * Rainbow tables are mainly a problem for **unsalted hashes**.
+
+# Password Hashes & Hash Identification
+
+## Hash Identification
+
+When an attacker finds a password hash, they first need to work out **what type of hash it is** before attempting to crack it.
+
+Tools such as **hashID** can help identify hash types, but they are not always reliable. The best approach is to combine:
+
+* The hash format
+* Where the hash was found
+* Its length and encoding
+* Known prefixes
+* Hash identification tools
+* Research
+
+For example, if a hash is found in a **web application database**, MD5 may be more likely than NTLM.
+
+---
+
+## Linux Password Hashes
+
+Linux password hashes are normally stored in:
+
+```text
+/etc/shadow
+```
+
+This file is normally only readable by **root**.
+
+Older Linux systems stored password hashes in `/etc/passwd`, which was readable by everyone.
+
+### Linux Shadow File
+
+Each line contains fields separated by `:`.
+
+The second field contains the password information.
+
+Linux password hashes commonly have this structure:
+
+```text
+$prefix$options$salt$hash
+```
+
+The four parts are:
+
+* **Prefix** → identifies the hashing algorithm
+* **Options** → parameters used by the algorithm
+* **Salt** → random value added to the password
+* **Hash** → resulting password hash
+
+### Common Linux Hash Prefixes
+
+| Prefix                         | Algorithm     |
+| ------------------------------ | ------------- |
+| `$y$`                          | yescrypt      |
+| `$gy$`                         | gost-yescrypt |
+| `$7$`                          | scrypt        |
+| `$2b$`, `$2y$`, `$2a$`, `$2x$` | bcrypt        |
+| `$6$`                          | sha512crypt   |
+| `$md5`                         | SunMD5        |
+| `$1$`                          | md5crypt      |
+
+The **prefix makes Linux password hashes easier to identify**.
+
+### Example
+
+A modern Linux shadow entry might look like:
+
+```text
+strategos:$y$j9T$76UzfgEM5PnymhQ7TlJey1$/OOSg64dhfF.TigVPdzqiFang6uZA4QA1pzzegKdVm4:...
+```
+
+The important part is:
+
+```text
+$y$j9T$76UzfgEM5PnymhQ7TlJey1$/OOSg64dhfF.TigVPdzqiFang6uZA4QA1pzzegKdVm4
+```
+
+This can be broken down into:
+
+* `$y$` → yescrypt
+* `j9T` → algorithm parameter
+* `76UzfgEM5PnymhQ7TlJey1` → salt
+* The final section → hash value
+
+---
+
+## Windows Password Hashes
+
+Windows uses **NTLM hashes** for password storage.
+
+NTLM is based on **MD4**, so NTLM, MD4 and MD5 hashes can look very similar.
+
+This means **context is important** when identifying them.
+
+Windows password hashes are stored in the **SAM (Security Accounts Manager)**.
+
+Windows protects the SAM from normal users, but attackers may use specialised tools to obtain password hashes.
+
+The hashes found in the SAM can include:
+
+* **NT hashes**
+* **LM hashes**
+
+---
+
+## Key Takeaways
+
+* Attackers need to identify a hash type before trying to crack it.
+* Hash identification tools are useful but are not always accurate.
+* Context can help identify the correct hash type.
+* Linux password hashes are normally stored in `/etc/shadow`.
+* Linux hashes often have a prefix that identifies the algorithm.
+* Windows password hashes are stored in the SAM.
+* Windows commonly uses NTLM hashes.
+* NTLM can look similar to MD4 and MD5, so context matters.
+* Hashcat's example hashes are useful for researching unknown hash formats.
+
+# Password Hash Cracking
+
+## Cracking Hashes
+
+Password hashes **cannot be decrypted** because hashing is not encryption.
+
+To crack a hash, an attacker:
+
+1. Takes a possible password.
+2. Hashes it using the correct algorithm.
+3. Compares the result with the target hash.
+4. Repeats this with many possible passwords.
+5. If the hashes match, the original password has been found.
+
+A common wordlist is **rockyou.txt**, which contains many commonly used passwords.
+
+### Salts
+
+A **salt** is a random value added to a password before hashing.
+
+For a salted password, the attacker needs to account for the salt when generating guesses.
+
+Salts make precomputed attacks such as **rainbow tables** much less useful because the same password produces different hashes when different salts are used.
+
+### Common Tools
+
+* **Hashcat** → commonly uses GPUs and can crack many hash types very quickly.
+* **John the Ripper** → commonly uses the CPU and is useful for password cracking.
+
+---
+
+## GPU Cracking
+
+GPUs have thousands of processing cores and are very good at performing certain mathematical calculations.
+
+This makes GPUs useful for testing large numbers of password guesses quickly.
+
+Some password-hashing algorithms, such as **bcrypt**, are designed to make GPU cracking less effective.
+
+---
+
+## Cracking Hashes in VMs
+
+Virtual machines normally do not have direct access to the host's GPU.
+
+This means GPU-based cracking can be much slower in a VM.
+
+For Hashcat, running it directly on the **host operating system** is usually better when a suitable GPU is available.
+
+John the Ripper mainly uses the CPU by default, so it can work inside a VM, although running it on the host can still provide better performance.
+
+---
+
+## Hashcat
+
+Basic Hashcat syntax:
+
+```text
+hashcat -m <hash_type> -a <attack_mode> hashfile wordlist
+```
+
+### Options
+
+| Option     | Meaning                         |
+| ---------- | ------------------------------- |
+| `-m`       | Hash type                       |
+| `-a`       | Attack mode                     |
+| `hashfile` | File containing the target hash |
+| `wordlist` | List of password guesses        |
+
+For example:
+
+```text
+hashcat -m 3200 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
+```
+
+Here:
+
+* `3200` = bcrypt
+* `0` = straight/dictionary attack
+* `hash.txt` = target hash
+* `rockyou.txt` = wordlist
+
+Another example:
+
+```text
+hashcat -m 1000 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
+```
+
+Here `1000` represents **NTLM**.
+
+## Key Takeaways
+
+* Hashes cannot be decrypted.
+* Hashes are cracked by testing possible passwords.
+* Salts make precomputed rainbow-table attacks less effective.
+* `rockyou.txt` is a common password wordlist.
+* Hashcat can use GPUs for faster cracking.
+* John the Ripper uses the CPU by default.
+* VMs can be slower for password cracking because of virtualisation overhead.
+* Hashcat's `-m` specifies the hash type.
+* Hashcat's `-a` specifies the attack mode.
+
+# Hashing for File Integrity & HMAC
+
+## File Integrity
+
+Hashing can be used to check whether a file has been changed.
+
+The same input always produces the same hash. Even a **small change to one bit** can produce a very different hash.
+
+This means we can:
+
+* Check whether a downloaded file has been modified.
+* Confirm a downloaded file matches the official file.
+* Detect changes to important files.
+* Find duplicate files.
+
+### Example
+
+A website might publish the official SHA-256 hash of a file.
+
+You can calculate the SHA-256 hash of your downloaded file using:
+
+```bash
+sha256sum filename.iso
+```
+
+If your hash matches the official hash, the file is identical to the one used to generate the published hash.
+
+### Finding Duplicate Files
+
+If two files have the same hash, they contain the same data.
+
+This makes hashing useful for finding duplicate files.
+
+---
+
+## HMAC
+
+**HMAC** = Hash-based Message Authentication Code.
+
+It combines:
+
+* A cryptographic hash function
+* A secret key
+* A message
+
+HMAC can provide both:
+
+* **Integrity** → shows that the message has not been changed.
+* **Authenticity** → the secret key helps prove that the message came from someone who knows the key.
+
+### Basic Idea
+
+```text
+Message + Secret Key
+        ↓
+      HMAC
+        ↓
+   HMAC value
+```
+
+The receiver can calculate the HMAC using the same secret key and compare the result.
+
+If the values match, the message has not been modified and the sender had the correct secret key.
+
+### HMAC Formula
+
+```text
+HMAC(K,M) = H((K ⊕ opad) || H((K ⊕ ipad) || M))
+```
+
+Where:
+
+* `K` = secret key
+* `M` = message
+* `H` = hash function
+* `⊕` = XOR
+* `||` = concatenation
+* `ipad` = inner padding
+* `opad` = outer padding
+
+## Key Takeaways
+
+* Hashes can detect changes to files.
+* The same data produces the same hash.
+* Even a tiny change can produce a very different hash.
+* `sha256sum` can be used to calculate a SHA-256 file hash.
+* Matching hashes indicate the files have the same data.
+* Hashing can also help find duplicate files.
+* HMAC combines a hash function with a secret key.
+* HMAC provides **integrity and authenticity**.
+
+# Hashing vs Encoding vs Encryption
+
+These three concepts are different and should not be confused.
+
+## Hashing
+
+Hashing takes input data and produces a **fixed-size hash value**, also called a **digest**.
+
+```text
+Input → Hash function → Hash
+```
+
+Important properties:
+
+* Hashing is **one-way**.
+* You cannot normally reverse a hash to get the original data.
+* The same input produces the same hash.
+* A small change to the input should produce a very different hash.
+* Used for **password storage**, **data integrity**, and checking whether data has changed.
+
+Examples:
+
+* MD5
+* SHA-1
+* SHA-256
+* SHA-512
+
+---
+
+## Encoding
+
+Encoding converts data into another format so it can be stored or transmitted correctly.
+
+Encoding is **not a security mechanism**.
+
+Examples of character encodings:
+
+* ASCII
+* UTF-8
+* UTF-16
+* UTF-32
+* ISO-8859-1
+* Windows-1252
+
+Other common encoding formats include:
+
+* Base32
+* Base64
+
+### Base64 example
+
+```bash id="v5f5af"
+echo "TryHackMe" | base64
+```
+
+Output:
+
+```text id="v7c0dj"
+VHJ5SGFja01lCg==
+```
+
+Decode it with:
+
+```bash id="k2jq9b"
+echo "VHJ5SGFja01lCg==" | base64 -d
+```
+
+Output:
+
+```text id="3v5c4z"
+TryHackMe
+```
+
+Encoding is **reversible**. Anyone with the correct encoding/decoding method can convert the data back.
+
+---
+
+## Encryption
+
+Encryption protects **confidentiality**.
+
+```text
+Plaintext + Key → Encryption → Ciphertext
+```
+
+The encrypted data can be decrypted when the correct key and encryption method are available.
+
+Encryption is used when we need to keep information **secret**.
+
+---
+
+## Quick Comparison
+
+|                   | Hashing                           | Encoding            | Encryption        |
+| ----------------- | --------------------------------- | ------------------- | ----------------- |
+| Main purpose      | Integrity / password verification | Data representation | Confidentiality   |
+| Reversible?       | No                                | Yes                 | Yes, with the key |
+| Uses a key?       | No                                | No                  | Yes               |
+| Protects secrecy? | No                                | No                  | Yes               |
+| Example           | SHA-256                           | Base64              | AES               |
+
+### Easy way to remember
+
+**Hashing = one-way**
+
+**Encoding = format conversion**
+
+**Encryption = secret + key**
