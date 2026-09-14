@@ -1877,3 +1877,126 @@ Shell / Meterpreter session
 * **Handler** = receives the incoming reverse connection.
 * `exploit/multi/handler` can handle reverse shells and Meterpreter sessions.
 * Encoders modify payload representation but **do not guarantee antivirus evasion**.
+
+# Security Tools Overview
+
+This room introduces several commonly used cybersecurity tools for reconnaissance, vulnerability assessment, password testing and exploitation.
+
+## Dirbuster
+
+**Dirbuster** is a web application directory and file discovery tool.
+
+It can be used to:
+
+* Discover hidden directories and files on a web server
+* Identify potentially interesting web resources
+* Perform content discovery using wordlists
+
+**Main use:** Web directory and file enumeration.
+
+---
+
+## Hydra
+
+**Hydra** is a network login cracking tool used to test authentication services.
+
+It can perform automated login attempts against services such as:
+
+* SSH
+* FTP
+* HTTP
+* SMB
+* RDP
+
+**Main use:** Testing the strength of usernames and passwords against network services.
+
+---
+
+## Nmap
+
+**Nmap (Network Mapper)** is a network discovery and security auditing tool.
+
+It can be used to:
+
+* Discover hosts
+* Scan ports
+* Identify running services
+* Detect service versions
+* Identify operating systems
+* Perform basic vulnerability discovery
+
+**Main use:** Network and service enumeration.
+
+---
+
+## Nikto
+
+**Nikto** is a web server scanner used to identify potential security issues.
+
+It can check for:
+
+* Known vulnerable files
+* Outdated software
+* Dangerous or misconfigured files
+* Common web server vulnerabilities
+* Interesting HTTP headers and configurations
+
+**Main use:** Web server vulnerability scanning.
+
+---
+
+## Metasploit
+
+**Metasploit** is a penetration testing framework used to identify and exploit vulnerabilities.
+
+It contains modules for:
+
+* Information gathering
+* Scanning
+* Exploitation
+* Payload delivery
+* Post-exploitation
+
+Common components include:
+
+* **Exploits** — take advantage of vulnerabilities
+* **Payloads** — code executed on the target
+* **Auxiliary modules** — perform tasks such as scanning and enumeration
+* **Post modules** — perform actions after gaining access
+* **Meterpreter** — provides an interactive post-exploitation session
+
+**Main use:** Penetration testing and vulnerability exploitation.
+
+---
+
+## Quick Comparison
+
+| Tool           | Main Purpose                       |
+| -------------- | ---------------------------------- |
+| **Dirbuster**  | Web directory/file discovery       |
+| **Hydra**      | Authentication/password testing    |
+| **Nmap**       | Network and service enumeration    |
+| **Nikto**      | Web server vulnerability scanning  |
+| **Metasploit** | Exploitation and post-exploitation |
+
+### Simple workflow
+
+```text
+Nmap
+  ↓
+Discover hosts, ports and services
+  ↓
+Dirbuster / Nikto
+  ↓
+Enumerate web applications
+  ↓
+Hydra
+  ↓
+Test authentication
+  ↓
+Metasploit
+  ↓
+Exploit identified vulnerabilities
+```
+
+> These tools should only be used against systems you have permission to test.
