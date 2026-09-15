@@ -268,3 +268,208 @@ A `src` attribute means the JavaScript is **external**.
 * **External JS** is stored in a separate `.js` file.
 * The `src` attribute loads an external JavaScript file.
 * Page source can be inspected to identify internal and external JavaScript.
+
+## JavaScript Dialogues & User Interaction
+
+JavaScript can interact with users through built-in dialogue box functions:
+
+### `alert()`
+
+Displays a message with an **OK** button.
+
+```javascript
+alert("Hello THM");
+```
+
+Used for messages, warnings, or notifications.
+
+### `prompt()`
+
+Asks the user to enter information. It returns the value entered, or `null` if the user selects Cancel.
+
+```javascript
+name = prompt("What is your name?");
+alert("Hello " + name);
+```
+
+### `confirm()`
+
+Asks the user to confirm an action. It returns:
+
+* `true` → user clicks OK
+* `false` → user clicks Cancel
+
+```javascript
+confirm("Do you want to proceed?");
+```
+
+## Security
+
+JavaScript dialogue functions can also be abused by attackers.
+
+For example, malicious JavaScript could repeatedly display alert boxes:
+
+```javascript
+for (let i = 0; i < 3; i++) {
+    alert("Hacked");
+}
+```
+
+Changing the loop to a much larger number could repeatedly interrupt the user's browser.
+
+**Security takeaway:** Only run JavaScript or HTML files from trusted sources, as malicious JavaScript can cause unwanted behaviour and may be used in attacks such as XSS.
+
+## JavaScript Control Flow
+
+Control flow determines the **order in which JavaScript code is executed** based on conditions or repetition.
+
+Common control flow structures include:
+
+* `if-else` → makes decisions based on conditions
+* `switch` → chooses between multiple cases
+* `for` → repeats code a set number of times
+* `while` → repeats code while a condition is true
+* `do...while` → runs code at least once, then repeats while a condition is true
+
+### If-Else Statements
+
+`if-else` allows different code to run depending on whether a condition is true or false.
+
+```javascript
+age = prompt("What is your age");
+
+if (age >= 18) {
+    document.getElementById("message").innerHTML = "You are an adult.";
+} else {
+    document.getElementById("message").innerHTML = "You are a minor.";
+}
+```
+
+If the age is **18 or above**, the first block runs. Otherwise, the `else` block runs.
+
+## Client-Side Login Checks
+
+JavaScript can be used to implement login checks in a webpage.
+
+For example, a page might check whether the username is `admin` and whether the password matches a specific value.
+
+If authentication is performed **only in client-side JavaScript**, the code can potentially be inspected or modified by the user.
+
+**Security takeaway:** Sensitive authentication and authorisation decisions should be enforced on the **server**, not trusted solely to client-side JavaScript.
+
+## JavaScript Minification & Obfuscation
+
+### Minification
+
+**Minification** reduces the size of JavaScript code by removing unnecessary characters such as:
+
+* Spaces
+* Line breaks
+* Comments
+* Sometimes shortening variable names
+
+The code still works the same way, but it becomes harder for humans to read.
+
+**Main purpose:** reduce file size and improve loading performance.
+
+### Obfuscation
+
+**Obfuscation** changes JavaScript to make it difficult for humans to understand.
+
+It can:
+
+* Rename variables and functions to meaningless names
+* Add confusing or unnecessary code
+* Make the code look like random or "gibberish" characters
+
+The browser can still execute the code normally.
+
+**Main purpose:** make the code harder to understand or analyse.
+
+### Example
+
+Readable JavaScript:
+
+```javascript
+function hi() {
+    alert("Welcome to THM");
+}
+hi();
+```
+
+After obfuscation, the same functionality may look much more complicated, with names such as:
+
+```text
+_0x114713
+_0x2246f2
+_0x51a830
+```
+
+Even though the code looks completely different, it can still display the same alert.
+
+### Viewing JavaScript
+
+JavaScript loaded by a webpage can be viewed through browser developer tools:
+
+**Chrome → Inspect → Sources → select the `.js` file**
+
+This is useful when analysing a web application during security testing.
+
+### Deobfuscation
+
+Obfuscated JavaScript can be processed with a **JavaScript deobfuscator** to make it easier to understand.
+
+**Security takeaway:** Minification and obfuscation make JavaScript harder to read, but they do **not** make client-side code secret or secure. Code sent to the browser can generally be inspected by the user.
+
+## JavaScript Security Best Practices
+
+### Don't Rely Only on Client-Side Validation
+
+JavaScript can validate form input on the client side, but users can **disable or manipulate JavaScript**.
+
+Important validation should also happen on the **server side**.
+
+**Rule:** Never rely on client-side validation alone.
+
+### Don't Use Untrusted Libraries
+
+JavaScript can load external scripts using the `src` attribute:
+
+```html
+<script src="example.js"></script>
+```
+
+Only use libraries from **trusted and verified sources**. Attackers can create malicious libraries with names that look similar to legitimate ones.
+
+### Don't Hardcode Secrets
+
+Never store sensitive information directly in JavaScript, such as:
+
+* API keys
+* Access tokens
+* Passwords
+* Credentials
+
+Example of bad practice:
+
+```javascript
+const privateAPIKey = 'pk_TryHackMe-1337';
+```
+
+Client-side JavaScript can be inspected by users, so anything stored in it should be considered exposed.
+
+### Minify and Obfuscate JavaScript
+
+**Minification** reduces the size of JavaScript and can improve loading performance.
+
+**Obfuscation** makes the code harder for humans to understand.
+
+Both can make reverse engineering more difficult, although obfuscation **does not make secrets secure**.
+
+**Security takeaway:**
+
+* Validate on the server as well as the client.
+* Use trusted JavaScript libraries.
+* Never hardcode secrets in client-side JavaScript.
+* Minify and obfuscate production JavaScript where appropriate.
+
