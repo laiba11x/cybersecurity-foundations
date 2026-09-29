@@ -228,3 +228,39 @@ Analysis = correlate evidence and determine what happened
 Reporting = document the investigation and findings
 
 Different types of digital forensics focus on different sources of evidence.
+
+# Evidence Acquisition
+
+**Evidence acquisition** is the process of collecting digital evidence while keeping the original data unchanged.
+
+## Proper Authorisation
+
+Investigators should obtain **authorisation from the relevant authorities** before collecting digital evidence.
+
+This is important because digital evidence can contain private and sensitive information.
+
+## Chain of Custody
+
+A **chain of custody** is a formal record that tracks evidence throughout an investigation.
+
+It records details such as:
+
+* Evidence description
+* Who collected it
+* Date and time of collection
+* Storage location
+* Who accessed it and when
+
+This helps show that the evidence has remained **reliable and has not been tampered with**.
+
+## Write Blockers
+
+A **write blocker** is a forensic tool that prevents data from being written to a storage device.
+
+It allows investigators to examine or acquire evidence without modifying the original device.
+
+### Easy Memory
+
+> **Authorisation** = permission
+> **Chain of custody** = evidence tracking
+> **Write blocker** = prevents changes
