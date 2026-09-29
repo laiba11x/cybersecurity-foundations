@@ -264,3 +264,96 @@ It allows investigators to examine or acquire evidence without modifying the ori
 > **Authorisation** = permission
 > **Chain of custody** = evidence tracking
 > **Write blocker** = prevents changes
+
+# Windows Evidence Acquisition and Analysis
+
+Windows computers and laptops are common sources of digital forensic evidence.
+
+During the **Collection** phase, forensic images of the Windows system can be created.
+
+A **forensic image** is a **bit-by-bit copy** of data from a device or memory.
+
+## Types of Forensic Images
+
+### Disk Image
+
+A **disk image** is a copy of the data stored on a storage device such as an **HDD or SSD**.
+
+The data is **non-volatile**, meaning it remains after the system is restarted or powered off.
+
+Examples of data include:
+
+* Documents
+* Photos and videos
+* Internet browsing history
+* Other stored files
+
+### Memory Image
+
+A **memory image** is a copy of the data currently stored in the system's **RAM**.
+
+The data is **volatile**, meaning it is lost when the system is powered off or restarted.
+
+Examples include:
+
+* Running processes
+* Open files
+* Current network connections
+* Other information currently held in RAM
+
+The **memory image should normally be captured first** because restarting or shutting down the system can cause volatile evidence to be lost.
+
+## Windows Forensics Tools
+
+### FTK Imager
+
+**FTK Imager** is a widely used tool for:
+
+* Creating disk images
+* Viewing and analysing disk images
+
+It provides a graphical interface and supports different image formats.
+
+### Autopsy
+
+**Autopsy** is an **open-source digital forensics platform** used to analyse acquired disk images.
+
+Features include:
+
+* Keyword searching
+* Deleted file recovery
+* File metadata analysis
+* Extension mismatch detection
+
+### DumpIt
+
+**DumpIt** is a tool used to create **memory images** from Windows systems.
+
+It uses a command-line interface and can create memory dumps in different formats.
+
+### Volatility
+
+**Volatility** is an open-source tool used to analyse **memory images**.
+
+It uses **plugins** to investigate different types of memory artifacts.
+
+It supports operating systems including:
+
+* Windows
+* Linux
+* macOS
+* Android
+
+## Easy Memory
+
+> **Disk image = non-volatile storage**
+
+> **Memory image = volatile RAM**
+
+> **FTK Imager = disk imaging**
+
+> **Autopsy = disk image analysis**
+
+> **DumpIt = memory acquisition**
+
+> **Volatility = memory analysis**
