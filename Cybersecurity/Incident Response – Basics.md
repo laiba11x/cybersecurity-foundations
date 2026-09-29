@@ -358,3 +358,74 @@ An Incident Response Plan can include:
 > **Preparation → Detection & Analysis → Containment, Eradication & Recovery → Post-Incident Activity**
 
 > **Incident Response Plan = the formal document describing how an organisation handles incidents.**
+
+# Incident Detection and Response Tools
+
+The **Identification** phase in SANS and **Detection and Analysis** phase in NIST involve detecting and investigating security incidents.
+
+Manually identifying abnormal activity can be difficult, so security solutions are used to help detect and respond to incidents.
+
+## SIEM
+
+**SIEM (Security Information and Event Management)** collects important logs in one **centralised location**.
+
+It can:
+
+* Collect logs from different sources
+* Correlate information
+* Help identify security incidents
+
+## Antivirus (AV)
+
+**Antivirus (AV)** detects known malicious programs and regularly scans systems for them.
+
+## EDR
+
+**EDR (Endpoint Detection and Response)** is deployed on systems to protect against more advanced threats.
+
+EDR can also:
+
+* Detect threats
+* Investigate activity
+* Contain threats
+* Eradicate threats
+
+---
+
+# Playbooks
+
+A **playbook** is a set of guidelines for responding to a particular type of security incident.
+
+Playbooks provide a structured approach and help security teams respond consistently and efficiently.
+
+### Example: Phishing Email Playbook
+
+1. Notify relevant stakeholders.
+2. Analyse the email header and body to determine whether it is malicious.
+3. Analyse any attachments.
+4. Determine whether anyone opened the attachments.
+5. Isolate infected systems from the network.
+6. Block the sender.
+
+---
+
+# Runbooks
+
+A **runbook** contains the **detailed, step-by-step instructions** for carrying out specific actions during an incident.
+
+The exact steps can vary depending on the tools and resources available.
+
+## Playbook vs Runbook
+
+| Playbook                                    | Runbook                           |
+| ------------------------------------------- | --------------------------------- |
+| Provides overall incident response guidance | Provides detailed execution steps |
+| Explains **what should be done**            | Explains **how to do it**         |
+| Higher-level                                | More detailed and technical       |
+
+### Easy Memory
+
+> **Playbook = what to do**
+
+> **Runbook = how to do it**
+
